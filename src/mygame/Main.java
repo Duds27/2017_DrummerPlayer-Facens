@@ -1,5 +1,7 @@
 package mygame;
 
+import br.facens.model.objects.PratoEsquerdo;
+import br.facens.models.interfaces.DrummerAbstract;
 import com.jme3.app.SimpleApplication;
 import com.jme3.light.AmbientLight;
 import com.jme3.material.Material;
@@ -23,6 +25,9 @@ public class Main extends SimpleApplication {
 
     private static final long TIME_MAX_SECONDS = 1000;
     private static final long TIME_MIN_SECONDS = 500;
+    
+    
+    private DrummerAbstract pratoEsquerdo = new PratoEsquerdo("Prato_Esquerdo");
     
     
     private boolean initialPratoEsquerdo  = false;
@@ -51,11 +56,15 @@ public class Main extends SimpleApplication {
         
         //Models/drums_current8-scene_node/Cymbal.001/Circle.030-entity/Circle.030-ogremesh
     
+        
+        
+        pratoEsquerdo.criarObjeto(ColorRGBA.Yellow, rootNode, assetManager);
+        
         criarCaixaEsquerda();
         
         
         criarPratoPequeno();
-        criarPratoEsquerdo();
+       // criarPratoEsquerdo();
         criarPratoDireito();
         
         criarPedestalEsquerdo();
@@ -71,7 +80,7 @@ public class Main extends SimpleApplication {
         AmbientLight ambient = new AmbientLight();
         ambient.setColor(ColorRGBA.White);
         rootNode.addLight(ambient);         
-        
+       
         timeInitialPratoEsquerdo = System.currentTimeMillis();
         timeInitialPratoDireito = System.currentTimeMillis();
     }
@@ -80,9 +89,9 @@ public class Main extends SimpleApplication {
     public void simpleUpdate(float tpf) {
         //TODO: add update code
         
-                
-        movimentaPratoEsquerdo(tpf);
-        movimentaPratoDireito(tpf);
+       pratoEsquerdo.movimentaObjeto(rootNode, tpf);
+       // movimentaPratoEsquerdo(tpf);
+       // movimentaPratoDireito(tpf);
         //movimentaPratoPequeno(tpf);
         
         /*System.out.println("X: " + rotation.getX() + 
@@ -97,6 +106,11 @@ public class Main extends SimpleApplication {
     public void simpleRender(RenderManager rm) {
         //TODO: add render code
     }
+    
+    
+    
+    
+    
     
     
     private void criarCaixaEsquerda() {
