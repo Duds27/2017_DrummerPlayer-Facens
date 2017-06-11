@@ -1,0 +1,707 @@
+<scene exported_by="Eduardo" formatVersion="1.0.1" previous_export_time="0" export_time="1497120297.356" >
+  <nodes >
+    <node name="Cylinder.001" >
+      <position y="2.434335" x="-1.772896" z="0.308900" />
+      <rotation qy="0.195536" qx="-0.679533" qz="0.195536" qw="0.679534" />
+      <scale y="1.509450" x="2.308183" z="2.308183" />
+      <user_data type="IDPropertyGroup" name="cycles_visibility" value='&lt;bpy id prop: owner="OBCylinder.001", name="cycles_visibility", address=0x000000000E9A3138&gt;' />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity anisotropic_friction="False" lock_trans_y="False" damping_trans="0.03999999910593033" damping_rot="0.10000000149011612" inertia_tensor="0.4000000059604645" actor="False" velocity_min="0.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" meshFile="Cylinder.001.mesh" friction_y="1.0" friction_x="1.0" friction_z="1.0" velocity_max="0.0" ghost="False" name="Cylinder.001" mass_radius="1.0" mass="1.0" lock_rot_x="False" lock_rot_y="False" lock_rot_z="False" >
+        <user_data type="IDPropertyGroup" name="cycles" value='&lt;bpy id prop: owner="MECylinder.001", name="cycles", address=0x000000000E9A8828&gt;' />
+      </entity>
+    </node>
+    <node name="Plane" >
+      <position y="0.000000" x="-0.000000" z="0.000000" />
+      <rotation qy="0.000000" qx="-0.000000" qz="0.000000" qw="1.000000" />
+      <scale y="1.000000" x="1.000000" z="1.000000" />
+      <user_data type="IDPropertyGroup" name="cycles_visibility" value='&lt;bpy id prop: owner="OBPlane", name="cycles_visibility", address=0x000000000E9A2EC8&gt;' />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity anisotropic_friction="False" lock_trans_y="False" damping_trans="0.03999999910593033" damping_rot="0.10000000149011612" inertia_tensor="0.4000000059604645" actor="False" velocity_min="0.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" meshFile="Plane.002.mesh" friction_y="1.0" friction_x="1.0" friction_z="1.0" velocity_max="0.0" ghost="False" name="Plane.002" mass_radius="1.0" mass="1.0" lock_rot_x="False" lock_rot_y="False" lock_rot_z="False" >
+        <user_data type="IDPropertyGroup" name="cycles" value='&lt;bpy id prop: owner="MEPlane.002", name="cycles", address=0x000000000E9A88F8&gt;' />
+      </entity>
+    </node>
+    <node name="Sun.001" >
+      <position y="27.726482" x="29.304913" z="-24.838659" />
+      <rotation qy="-0.805387" qx="-0.491426" qz="0.172635" qw="0.282928" />
+      <scale y="1.000000" x="1.000000" z="1.000000" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <light type="directional" name="Sun.001" powerScale="1.0" >
+        <position y="27.726482" x="29.304913" z="-24.838659" />
+        <lightAttenuation range="5000" quadratic="0.0" constant="1.0" linear="0.04" />
+        <direction y="-0.457" x="-0.889" z="-0.0" />
+        <colourDiffuse r="1.0" b="1.0" g="1.0" />
+        <colourSpecular r="1.0" b="1.0" g="1.0" />
+      </light>
+    </node>
+    <node name="Sun" >
+      <position y="27.726494" x="-46.386398" z="-1.410397" />
+      <rotation qy="0.000000" qx="0.000000" qz="0.520867" qw="0.853638" />
+      <scale y="1.000000" x="1.000000" z="1.000000" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <light type="directional" name="Sun" powerScale="1.0" >
+        <position y="27.726494" x="-46.386398" z="-1.410397" />
+        <lightAttenuation range="5000" quadratic="0.0" constant="1.0" linear="0.04" />
+        <direction y="-0.457" x="-0.889" z="-0.0" />
+        <colourDiffuse r="1.0" b="1.0" g="1.0" />
+        <colourSpecular r="1.0" b="1.0" g="1.0" />
+      </light>
+    </node>
+    <node name="RimClamps.003" >
+      <position y="4.689873" x="-1.420832" z="4.923720" />
+      <rotation qy="-0.679846" qx="0.009863" qz="-0.004921" qw="0.733272" />
+      <scale y="1.000099" x="1.185868" z="1.185930" />
+      <user_data type="IDPropertyGroup" name="cycles_visibility" value='&lt;bpy id prop: owner="OBRimClamps.003", name="cycles_visibility", address=0x000000000E9A7A58&gt;' />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity anisotropic_friction="False" lock_trans_y="False" damping_trans="0.03999999910593033" damping_rot="0.10000000149011612" inertia_tensor="0.4000000059604645" actor="False" velocity_min="0.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" meshFile="Circle.036.mesh" friction_y="1.0" friction_x="1.0" friction_z="1.0" velocity_max="0.0" ghost="False" name="Circle.036" mass_radius="1.0" mass="1.0" lock_rot_x="False" lock_rot_y="False" lock_rot_z="False" >
+        <user_data type="IDPropertyGroup" name="cycles" value='&lt;bpy id prop: owner="MECircle.036", name="cycles", address=0x000000000E9AA228&gt;' />
+      </entity>
+      <node name="RimClampEmpt.003" >
+        <position y="0.000000" x="-0.000000" z="0.000000" />
+        <rotation qy="-0.500000" qx="-0.000000" qz="-0.000000" qw="0.866025" />
+        <scale y="1.000000" x="1.000000" z="1.000000" />
+        <game >
+          <sensors />
+          <actuators />
+        </game>
+      </node>
+    </node>
+    <node name="DrumBody.004" >
+      <position y="4.774531" x="-1.421454" z="4.925845" />
+      <rotation qy="-0.679846" qx="0.009863" qz="-0.004921" qw="0.733272" />
+      <scale y="0.687674" x="1.185868" z="1.185930" />
+      <user_data type="IDPropertyGroup" name="cycles_visibility" value='&lt;bpy id prop: owner="OBDrumBody.004", name="cycles_visibility", address=0x000000000E9A3A28&gt;' />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity anisotropic_friction="False" lock_trans_y="False" damping_trans="0.03999999910593033" damping_rot="0.10000000149011612" inertia_tensor="0.4000000059604645" actor="False" velocity_min="0.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" meshFile="Circle.035.mesh" friction_y="1.0" friction_x="1.0" friction_z="1.0" velocity_max="0.0" ghost="False" name="Circle.035" mass_radius="1.0" mass="1.0" lock_rot_x="False" lock_rot_y="False" lock_rot_z="False" >
+        <user_data type="IDPropertyGroup" name="cycles" value='&lt;bpy id prop: owner="MECircle.035", name="cycles", address=0x000000000E9A95F8&gt;' />
+      </entity>
+    </node>
+    <node name="RimHolder.003" >
+      <position y="4.689757" x="-1.420831" z="4.923717" />
+      <rotation qy="-0.679846" qx="0.009863" qz="-0.004921" qw="0.733272" />
+      <scale y="1.000099" x="1.185868" z="1.185930" />
+      <user_data type="IDPropertyGroup" name="cycles_visibility" value='&lt;bpy id prop: owner="OBRimHolder.003", name="cycles_visibility", address=0x000000000E9A4DA8&gt;' />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity anisotropic_friction="False" lock_trans_y="False" damping_trans="0.03999999910593033" damping_rot="0.10000000149011612" inertia_tensor="0.4000000059604645" actor="False" velocity_min="0.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" meshFile="Circle.034.mesh" friction_y="1.0" friction_x="1.0" friction_z="1.0" velocity_max="0.0" ghost="False" name="Circle.034" mass_radius="1.0" mass="1.0" lock_rot_x="False" lock_rot_y="False" lock_rot_z="False" >
+        <user_data type="IDPropertyGroup" name="cycles" value='&lt;bpy id prop: owner="MECircle.034", name="cycles", address=0x000000000E9A9388&gt;' />
+      </entity>
+      <node name="RimHolderEmpt.003" >
+        <position y="-0.000000" x="-0.000000" z="-0.000000" />
+        <rotation qy="-0.500000" qx="-0.000000" qz="-0.000000" qw="0.866025" />
+        <scale y="1.000000" x="1.000000" z="1.000000" />
+        <game >
+          <sensors />
+          <actuators />
+        </game>
+      </node>
+    </node>
+    <node name="StandEmpty.003" >
+      <position y="0.518734" x="-1.426281" z="4.932751" />
+      <rotation qy="-0.716924" qx="-0.000000" qz="0.000000" qw="0.697152" />
+      <scale y="0.623528" x="0.623528" z="0.623528" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+    </node>
+    <node name="Circle.009" >
+      <position y="0.518734" x="-1.426281" z="4.932751" />
+      <rotation qy="0.962213" qx="-0.000000" qz="0.000000" qw="0.272299" />
+      <scale y="0.623528" x="0.623527" z="0.623527" />
+      <user_data type="IDPropertyGroup" name="cycles_visibility" value='&lt;bpy id prop: owner="OBCircle.009", name="cycles_visibility", address=0x000000000E9A0BD8&gt;' />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity anisotropic_friction="False" lock_trans_y="False" damping_trans="0.03999999910593033" damping_rot="0.10000000149011612" inertia_tensor="0.4000000059604645" actor="False" velocity_min="0.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" meshFile="Circle.033.mesh" friction_y="1.0" friction_x="1.0" friction_z="1.0" velocity_max="0.0" ghost="False" name="Circle.033" mass_radius="1.0" mass="1.0" lock_rot_x="False" lock_rot_y="False" lock_rot_z="False" >
+        <user_data type="IDPropertyGroup" name="cycles" value='&lt;bpy id prop: owner="MECircle.033", name="cycles", address=0x000000000E9AA638&gt;' />
+      </entity>
+    </node>
+    <node name="hat" >
+      <position y="6.521354" x="-4.054472" z="4.695418" />
+      <rotation qy="0.000000" qx="-0.000000" qz="0.000000" qw="1.000000" />
+      <scale y="1.741975" x="1.741975" z="1.741975" />
+      <user_data type="IDPropertyGroup" name="cycles_visibility" value='&lt;bpy id prop: owner="OBhat", name="cycles_visibility", address=0x000000000E9A19A8&gt;' />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity anisotropic_friction="False" lock_trans_y="False" damping_trans="0.03999999910593033" damping_rot="0.10000000149011612" inertia_tensor="0.4000000059604645" actor="False" velocity_min="0.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" meshFile="Circle.032.mesh" friction_y="1.0" friction_x="1.0" friction_z="1.0" velocity_max="0.0" ghost="False" name="Circle.032" mass_radius="1.0" mass="1.0" lock_rot_x="False" lock_rot_y="False" lock_rot_z="False" >
+        <user_data type="IDPropertyGroup" name="cycles" value='&lt;bpy id prop: owner="MECircle.032", name="cycles", address=0x000000000E9A8758&gt;' />
+      </entity>
+    </node>
+    <node name="Circle.008" >
+      <position y="4.903340" x="-2.155779" z="-0.182685" />
+      <rotation qy="0.008167" qx="-0.602791" qz="0.369653" qw="0.707060" />
+      <scale y="0.270198" x="0.270198" z="0.270198" />
+      <user_data type="IDPropertyGroup" name="cycles_visibility" value='&lt;bpy id prop: owner="OBCircle.008", name="cycles_visibility", address=0x000000000E9A0B08&gt;' />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity anisotropic_friction="False" lock_trans_y="False" damping_trans="0.03999999910593033" damping_rot="0.10000000149011612" inertia_tensor="0.4000000059604645" actor="False" velocity_min="0.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" meshFile="Circle.031.mesh" friction_y="1.0" friction_x="1.0" friction_z="1.0" velocity_max="0.0" ghost="False" name="Circle.031" mass_radius="1.0" mass="1.0" lock_rot_x="False" lock_rot_y="False" lock_rot_z="False" >
+        <user_data type="IDPropertyGroup" name="cycles" value='&lt;bpy id prop: owner="MECircle.031", name="cycles", address=0x000000000E9A8688&gt;' />
+      </entity>
+    </node>
+    <node name="Cymbal.001" >
+      <position y="10.797869" x="-3.413810" z="3.439140" />
+      <rotation qy="-0.010508" qx="0.047849" qz="-0.073480" qw="0.996093" />
+      <scale y="1.947156" x="1.947157" z="1.947156" />
+      <user_data type="IDPropertyGroup" name="cycles_visibility" value='&lt;bpy id prop: owner="OBCymbal.001", name="cycles_visibility", address=0x000000000E9A3478&gt;' />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity anisotropic_friction="False" lock_trans_y="False" damping_trans="0.03999999910593033" damping_rot="0.10000000149011612" inertia_tensor="0.4000000059604645" actor="False" velocity_min="0.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" meshFile="Circle.030.mesh" friction_y="1.0" friction_x="1.0" friction_z="1.0" velocity_max="0.0" ghost="False" name="Circle.030" mass_radius="1.0" mass="1.0" lock_rot_x="False" lock_rot_y="False" lock_rot_z="False" >
+        <user_data type="IDPropertyGroup" name="cycles" value='&lt;bpy id prop: owner="MECircle.030", name="cycles", address=0x000000000E9AAE58&gt;' />
+      </entity>
+    </node>
+    <node name="Cymbal" >
+      <position y="10.810957" x="1.821236" z="-0.299294" />
+      <rotation qy="0.005964" qx="0.065981" qz="0.004951" qw="0.997791" />
+      <scale y="2.210773" x="2.210773" z="2.210773" />
+      <user_data type="IDPropertyGroup" name="cycles_visibility" value='&lt;bpy id prop: owner="OBCymbal", name="cycles_visibility", address=0x000000000E9A1DB8&gt;' />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity anisotropic_friction="False" lock_trans_y="False" damping_trans="0.03999999910593033" damping_rot="0.10000000149011612" inertia_tensor="0.4000000059604645" actor="False" velocity_min="0.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" meshFile="Circle.029.mesh" friction_y="1.0" friction_x="1.0" friction_z="1.0" velocity_max="0.0" ghost="False" name="Circle.029" mass_radius="1.0" mass="1.0" lock_rot_x="False" lock_rot_y="False" lock_rot_z="False" >
+        <user_data type="IDPropertyGroup" name="cycles" value='&lt;bpy id prop: owner="MECircle.029", name="cycles", address=0x000000000E9A9C78&gt;' />
+      </entity>
+    </node>
+    <node name="StandEmpty.002" >
+      <position y="0.518734" x="-4.054656" z="4.693239" />
+      <rotation qy="-0.820076" qx="-0.000000" qz="0.000000" qw="0.572254" />
+      <scale y="0.623528" x="0.623528" z="0.623528" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+    </node>
+    <node name="Circle.007" >
+      <position y="0.518734" x="-4.054656" z="4.693239" />
+      <rotation qy="0.905625" qx="-0.000000" qz="0.000000" qw="0.424080" />
+      <scale y="0.623528" x="0.623528" z="0.623528" />
+      <user_data type="IDPropertyGroup" name="cycles_visibility" value='&lt;bpy id prop: owner="OBCircle.007", name="cycles_visibility", address=0x000000000E99E268&gt;' />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity anisotropic_friction="False" lock_trans_y="False" damping_trans="0.03999999910593033" damping_rot="0.10000000149011612" inertia_tensor="0.4000000059604645" actor="False" velocity_min="0.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" meshFile="Circle.028.mesh" friction_y="1.0" friction_x="1.0" friction_z="1.0" velocity_max="0.0" ghost="False" name="Circle.028" mass_radius="1.0" mass="1.0" lock_rot_x="False" lock_rot_y="False" lock_rot_z="False" >
+        <user_data type="IDPropertyGroup" name="cycles" value='&lt;bpy id prop: owner="MECircle.028", name="cycles", address=0x000000000E9AAA48&gt;' />
+      </entity>
+    </node>
+    <node name="Circle.006" >
+      <position y="5.074339" x="-2.045527" z="-0.003913" />
+      <rotation qy="0.863829" qx="-0.000000" qz="0.000000" qw="0.503785" />
+      <scale y="0.298807" x="0.298807" z="0.298807" />
+      <user_data type="IDPropertyGroup" name="cycles_visibility" value='&lt;bpy id prop: owner="OBCircle.006", name="cycles_visibility", address=0x000000000E99F448&gt;' />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity anisotropic_friction="False" lock_trans_y="False" damping_trans="0.03999999910593033" damping_rot="0.10000000149011612" inertia_tensor="0.4000000059604645" actor="False" velocity_min="0.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" meshFile="Circle.027.mesh" friction_y="1.0" friction_x="1.0" friction_z="1.0" velocity_max="0.0" ghost="False" name="Circle.027" mass_radius="1.0" mass="1.0" lock_rot_x="False" lock_rot_y="False" lock_rot_z="False" >
+        <user_data type="IDPropertyGroup" name="cycles" value='&lt;bpy id prop: owner="MECircle.027", name="cycles", address=0x000000000E9A9048&gt;' />
+      </entity>
+    </node>
+    <node name="DrumMount.003" >
+      <position y="4.718992" x="-2.045204" z="-0.008883" />
+      <rotation qy="0.272211" qx="-0.000000" qz="0.000000" qw="0.962238" />
+      <scale y="1.284169" x="1.265656" z="1.265656" />
+      <user_data type="IDPropertyGroup" name="cycles_visibility" value='&lt;bpy id prop: owner="OBDrumMount.003", name="cycles_visibility", address=0x000000000E9A4658&gt;' />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity anisotropic_friction="False" lock_trans_y="False" damping_trans="0.03999999910593033" damping_rot="0.10000000149011612" inertia_tensor="0.4000000059604645" actor="False" velocity_min="0.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" meshFile="Circle.026.mesh" friction_y="1.0" friction_x="1.0" friction_z="1.0" velocity_max="0.0" ghost="False" name="Circle.026" mass_radius="1.0" mass="1.0" lock_rot_x="False" lock_rot_y="False" lock_rot_z="False" >
+        <user_data type="IDPropertyGroup" name="cycles" value='&lt;bpy id prop: owner="MECircle.026", name="cycles", address=0x000000000E9AA978&gt;' />
+      </entity>
+    </node>
+    <node name="StandEmpty.001" >
+      <position y="0.723598" x="-5.286589" z="2.777243" />
+      <rotation qy="0.999257" qx="-0.000000" qz="0.000000" qw="0.038549" />
+      <scale y="0.623528" x="0.623528" z="0.623528" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+    </node>
+    <node name="Circle.005" >
+      <position y="0.723598" x="-5.286589" z="2.777243" />
+      <rotation qy="0.466244" qx="-0.000000" qz="0.000000" qw="0.884656" />
+      <scale y="0.623528" x="0.623528" z="0.623528" />
+      <user_data type="IDPropertyGroup" name="cycles_visibility" value='&lt;bpy id prop: owner="OBCircle.005", name="cycles_visibility", address=0x000000000E9A0558&gt;' />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity anisotropic_friction="False" lock_trans_y="False" damping_trans="0.03999999910593033" damping_rot="0.10000000149011612" inertia_tensor="0.4000000059604645" actor="False" velocity_min="0.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" meshFile="Circle.025.mesh" friction_y="1.0" friction_x="1.0" friction_z="1.0" velocity_max="0.0" ghost="False" name="Circle.025" mass_radius="1.0" mass="1.0" lock_rot_x="False" lock_rot_y="False" lock_rot_z="False" >
+        <user_data type="IDPropertyGroup" name="cycles" value='&lt;bpy id prop: owner="MECircle.025", name="cycles", address=0x000000000E9A7D98&gt;' />
+      </entity>
+    </node>
+    <node name="CymbalRod.001" >
+      <position y="8.033571" x="-5.311493" z="2.857915" />
+      <rotation qy="0.552476" qx="-0.000000" qz="0.000000" qw="0.833529" />
+      <scale y="0.325567" x="0.325567" z="0.325567" />
+      <user_data type="IDPropertyGroup" name="cycles_visibility" value='&lt;bpy id prop: owner="OBCymbalRod.001", name="cycles_visibility", address=0x000000000E9A37B8&gt;' />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity anisotropic_friction="False" lock_trans_y="False" damping_trans="0.03999999910593033" damping_rot="0.10000000149011612" inertia_tensor="0.4000000059604645" actor="False" velocity_min="0.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" meshFile="Circle.023.mesh" friction_y="1.0" friction_x="1.0" friction_z="1.0" velocity_max="0.0" ghost="False" name="Circle.023" mass_radius="1.0" mass="1.0" lock_rot_x="False" lock_rot_y="False" lock_rot_z="False" >
+        <user_data type="IDPropertyGroup" name="cycles" value='&lt;bpy id prop: owner="MECircle.023", name="cycles", address=0x000000000E9AA2F8&gt;' />
+      </entity>
+    </node>
+    <node name="Cylinder" >
+      <position y="2.434335" x="-1.772896" z="0.308900" />
+      <rotation qy="0.195536" qx="-0.679533" qz="0.195536" qw="0.679534" />
+      <scale y="1.509450" x="2.308183" z="2.308183" />
+      <user_data type="IDPropertyGroup" name="cycles_visibility" value='&lt;bpy id prop: owner="OBCylinder", name="cycles_visibility", address=0x000000000E99F858&gt;' />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity anisotropic_friction="False" lock_trans_y="False" damping_trans="0.03999999910593033" damping_rot="0.10000000149011612" inertia_tensor="0.4000000059604645" actor="False" velocity_min="0.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" meshFile="Cylinder.mesh" friction_y="1.0" friction_x="1.0" friction_z="1.0" velocity_max="0.0" ghost="False" name="Cylinder" mass_radius="1.0" mass="1.0" lock_rot_x="False" lock_rot_y="False" lock_rot_z="False" >
+        <user_data type="IDPropertyGroup" name="cycles" value='&lt;bpy id prop: owner="MECylinder", name="cycles", address=0x000000000E9A8278&gt;' />
+      </entity>
+    </node>
+    <node name="Circle.004" >
+      <position y="2.426021" x="-1.774072" z="0.309711" />
+      <rotation qy="0.440698" qx="-0.702635" qz="-0.079395" qw="0.552979" />
+      <scale y="2.572683" x="2.572683" z="2.572682" />
+      <user_data type="IDPropertyGroup" name="cycles_visibility" value='&lt;bpy id prop: owner="OBCircle.004", name="cycles_visibility", address=0x000000000E99FED8&gt;' />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity anisotropic_friction="False" lock_trans_y="False" damping_trans="0.03999999910593033" damping_rot="0.10000000149011612" inertia_tensor="0.4000000059604645" actor="False" velocity_min="0.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" meshFile="Circle.022.mesh" friction_y="1.0" friction_x="1.0" friction_z="1.0" velocity_max="0.0" ghost="False" name="Circle.022" mass_radius="1.0" mass="1.0" lock_rot_x="False" lock_rot_y="False" lock_rot_z="False" >
+        <user_data type="IDPropertyGroup" name="cycles" value='&lt;bpy id prop: owner="MECircle.022", name="cycles", address=0x000000000E9AA708&gt;' />
+      </entity>
+      <node name="BaseDrumRimEmpt" >
+        <position y="-0.000000" x="-0.000000" z="0.000000" />
+        <rotation qy="-0.382683" qx="-0.000000" qz="-0.000000" qw="0.923880" />
+        <scale y="1.000000" x="1.000000" z="1.000000" />
+        <game >
+          <sensors />
+          <actuators />
+        </game>
+      </node>
+    </node>
+    <node name="CymbalRod" >
+      <position y="8.033571" x="1.610984" z="-2.259499" />
+      <rotation qy="0.000000" qx="-0.000000" qz="0.000000" qw="1.000000" />
+      <scale y="0.325567" x="0.325567" z="0.325567" />
+      <user_data type="IDPropertyGroup" name="cycles_visibility" value='&lt;bpy id prop: owner="OBCymbalRod", name="cycles_visibility", address=0x000000000E9A3FD8&gt;' />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity anisotropic_friction="False" lock_trans_y="False" damping_trans="0.03999999910593033" damping_rot="0.10000000149011612" inertia_tensor="0.4000000059604645" actor="False" velocity_min="0.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" meshFile="Circle.021.mesh" friction_y="1.0" friction_x="1.0" friction_z="1.0" velocity_max="0.0" ghost="False" name="Circle.021" mass_radius="1.0" mass="1.0" lock_rot_x="False" lock_rot_y="False" lock_rot_z="False" >
+        <user_data type="IDPropertyGroup" name="cycles" value='&lt;bpy id prop: owner="MECircle.021", name="cycles", address=0x000000000E9A9E18&gt;' />
+      </entity>
+    </node>
+    <node name="VerticalMountClamp" >
+      <position y="4.613564" x="2.158972" z="-2.035112" />
+      <rotation qy="0.464350" qx="-0.464350" qz="-0.533272" qw="0.533272" />
+      <scale y="1.000000" x="1.000000" z="1.000000" />
+      <user_data type="IDPropertyGroup" name="cycles_visibility" value='&lt;bpy id prop: owner="OBVerticalMountClamp", name="cycles_visibility", address=0x000000000E9A78B8&gt;' />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity anisotropic_friction="False" lock_trans_y="False" damping_trans="0.03999999910593033" damping_rot="0.10000000149011612" inertia_tensor="0.4000000059604645" actor="False" velocity_min="0.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" meshFile="Plane.001.mesh" friction_y="1.0" friction_x="1.0" friction_z="1.0" velocity_max="0.0" ghost="False" name="Plane.001" mass_radius="1.0" mass="1.0" lock_rot_x="False" lock_rot_y="False" lock_rot_z="False" >
+        <user_data type="IDPropertyGroup" name="cycles" value='&lt;bpy id prop: owner="MEPlane.001", name="cycles", address=0x000000000E9A9938&gt;' />
+      </entity>
+    </node>
+    <node name="StandEmpty" >
+      <position y="0.723598" x="1.685027" z="-2.258777" />
+      <rotation qy="0.807405" qx="-0.000000" qz="0.000000" qw="0.589998" />
+      <scale y="0.623528" x="0.623528" z="0.623528" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+    </node>
+    <node name="Circle.003" >
+      <position y="0.723598" x="1.685027" z="-2.258777" />
+      <rotation qy="-0.107251" qx="-0.000000" qz="0.000000" qw="0.994232" />
+      <scale y="0.623528" x="0.623528" z="0.623528" />
+      <user_data type="IDPropertyGroup" name="cycles_visibility" value='&lt;bpy id prop: owner="OBCircle.003", name="cycles_visibility", address=0x000000000E9A0218&gt;' />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity anisotropic_friction="False" lock_trans_y="False" damping_trans="0.03999999910593033" damping_rot="0.10000000149011612" inertia_tensor="0.4000000059604645" actor="False" velocity_min="0.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" meshFile="Circle.020.mesh" friction_y="1.0" friction_x="1.0" friction_z="1.0" velocity_max="0.0" ghost="False" name="Circle.020" mass_radius="1.0" mass="1.0" lock_rot_x="False" lock_rot_y="False" lock_rot_z="False" >
+        <user_data type="IDPropertyGroup" name="cycles" value='&lt;bpy id prop: owner="MECircle.020", name="cycles", address=0x000000000E9A8EA8&gt;' />
+      </entity>
+    </node>
+    <node name="RimHolder.002" >
+      <position y="5.315770" x="2.815206" z="-0.098482" />
+      <rotation qy="-0.676871" qx="0.041588" qz="-0.026907" qw="0.734433" />
+      <scale y="1.557437" x="1.310353" z="1.310211" />
+      <user_data type="IDPropertyGroup" name="cycles_visibility" value='&lt;bpy id prop: owner="OBRimHolder.002", name="cycles_visibility", address=0x000000000E9A59D8&gt;' />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity anisotropic_friction="False" lock_trans_y="False" damping_trans="0.03999999910593033" damping_rot="0.10000000149011612" inertia_tensor="0.4000000059604645" actor="False" velocity_min="0.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" meshFile="Circle.019.mesh" friction_y="1.0" friction_x="1.0" friction_z="1.0" velocity_max="0.0" ghost="False" name="Circle.019" mass_radius="1.0" mass="1.0" lock_rot_x="False" lock_rot_y="False" lock_rot_z="False" >
+        <user_data type="IDPropertyGroup" name="cycles" value='&lt;bpy id prop: owner="MECircle.019", name="cycles", address=0x000000000E9A8D08&gt;' />
+      </entity>
+      <node name="RimHolderEmpt.002" >
+        <position y="0.000000" x="-0.000000" z="-0.000000" />
+        <rotation qy="-0.500000" qx="-0.000000" qz="0.000000" qw="0.866025" />
+        <scale y="1.000000" x="1.000000" z="1.000000" />
+        <game >
+          <sensors />
+          <actuators />
+        </game>
+      </node>
+    </node>
+    <node name="DrumBody.003" >
+      <position y="5.506758" x="2.812693" z="-0.080744" />
+      <rotation qy="-0.676871" qx="0.041588" qz="-0.026907" qw="0.734433" />
+      <scale y="1.558843" x="1.310106" z="1.309964" />
+      <user_data type="IDPropertyGroup" name="cycles_visibility" value='&lt;bpy id prop: owner="OBDrumBody.003", name="cycles_visibility", address=0x000000000E9A3888&gt;' />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity anisotropic_friction="False" lock_trans_y="False" damping_trans="0.03999999910593033" damping_rot="0.10000000149011612" inertia_tensor="0.4000000059604645" actor="False" velocity_min="0.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" meshFile="Circle.018.mesh" friction_y="1.0" friction_x="1.0" friction_z="1.0" velocity_max="0.0" ghost="False" name="Circle.018" mass_radius="1.0" mass="1.0" lock_rot_x="False" lock_rot_y="False" lock_rot_z="False" >
+        <user_data type="IDPropertyGroup" name="cycles" value='&lt;bpy id prop: owner="MECircle.018", name="cycles", address=0x000000000E9A81A8&gt;' />
+      </entity>
+    </node>
+    <node name="RimClamps.002" >
+      <position y="5.315948" x="2.815204" z="-0.098465" />
+      <rotation qy="-0.676871" qx="0.041588" qz="-0.026907" qw="0.734433" />
+      <scale y="1.557437" x="1.310353" z="1.310211" />
+      <user_data type="IDPropertyGroup" name="cycles_visibility" value='&lt;bpy id prop: owner="OBRimClamps.002", name="cycles_visibility", address=0x000000000E9A7988&gt;' />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity anisotropic_friction="False" lock_trans_y="False" damping_trans="0.03999999910593033" damping_rot="0.10000000149011612" inertia_tensor="0.4000000059604645" actor="False" velocity_min="0.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" meshFile="Circle.017.mesh" friction_y="1.0" friction_x="1.0" friction_z="1.0" velocity_max="0.0" ghost="False" name="Circle.017" mass_radius="1.0" mass="1.0" lock_rot_x="False" lock_rot_y="False" lock_rot_z="False" >
+        <user_data type="IDPropertyGroup" name="cycles" value='&lt;bpy id prop: owner="MECircle.017", name="cycles", address=0x000000000E9A8A98&gt;' />
+      </entity>
+      <node name="RimClampEmpt.002" >
+        <position y="-0.000000" x="-0.000000" z="0.000000" />
+        <rotation qy="-0.500000" qx="-0.000000" qz="0.000000" qw="0.866025" />
+        <scale y="1.000000" x="1.000000" z="1.000000" />
+        <game >
+          <sensors />
+          <actuators />
+        </game>
+      </node>
+    </node>
+    <node name="DrumMount.002" >
+      <position y="5.881031" x="2.708503" z="-1.442404" />
+      <rotation qy="-0.676871" qx="0.041588" qz="-0.026907" qw="0.734433" />
+      <scale y="0.875084" x="0.862469" z="0.862469" />
+      <user_data type="IDPropertyGroup" name="cycles_visibility" value='&lt;bpy id prop: owner="OBDrumMount.002", name="cycles_visibility", address=0x000000000E9A32D8&gt;' />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity anisotropic_friction="False" lock_trans_y="False" damping_trans="0.03999999910593033" damping_rot="0.10000000149011612" inertia_tensor="0.4000000059604645" actor="False" velocity_min="0.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" meshFile="Circle.016.mesh" friction_y="1.0" friction_x="1.0" friction_z="1.0" velocity_max="0.0" ghost="False" name="Circle.016" mass_radius="1.0" mass="1.0" lock_rot_x="False" lock_rot_y="False" lock_rot_z="False" >
+        <user_data type="IDPropertyGroup" name="cycles" value='&lt;bpy id prop: owner="MECircle.016", name="cycles", address=0x000000000E9AA568&gt;' />
+      </entity>
+    </node>
+    <node name="Circle.002" >
+      <position y="5.616687" x="2.678059" z="-2.119904" />
+      <rotation qy="0.856601" qx="-0.000000" qz="0.000000" qw="0.515979" />
+      <scale y="0.270198" x="0.270198" z="0.270198" />
+      <user_data type="IDPropertyGroup" name="cycles_visibility" value='&lt;bpy id prop: owner="OBCircle.002", name="cycles_visibility", address=0x000000000E99E9B8&gt;' />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity anisotropic_friction="False" lock_trans_y="False" damping_trans="0.03999999910593033" damping_rot="0.10000000149011612" inertia_tensor="0.4000000059604645" actor="False" velocity_min="0.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" meshFile="Circle.015.mesh" friction_y="1.0" friction_x="1.0" friction_z="1.0" velocity_max="0.0" ghost="False" name="Circle.015" mass_radius="1.0" mass="1.0" lock_rot_x="False" lock_rot_y="False" lock_rot_z="False" >
+        <user_data type="IDPropertyGroup" name="cycles" value='&lt;bpy id prop: owner="MECircle.015", name="cycles", address=0x000000000E9A80D8&gt;' />
+      </entity>
+    </node>
+    <node name="Circle.001" >
+      <position y="6.549228" x="-2.204244" z="0.257734" />
+      <rotation qy="-0.788185" qx="-0.000000" qz="0.000000" qw="0.615439" />
+      <scale y="0.270198" x="0.270198" z="0.270198" />
+      <user_data type="IDPropertyGroup" name="cycles_visibility" value='&lt;bpy id prop: owner="OBCircle.001", name="cycles_visibility", address=0x000000000E9A13F8&gt;' />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity anisotropic_friction="False" lock_trans_y="False" damping_trans="0.03999999910593033" damping_rot="0.10000000149011612" inertia_tensor="0.4000000059604645" actor="False" velocity_min="0.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" meshFile="Circle.014.mesh" friction_y="1.0" friction_x="1.0" friction_z="1.0" velocity_max="0.0" ghost="False" name="Circle.014" mass_radius="1.0" mass="1.0" lock_rot_x="False" lock_rot_y="False" lock_rot_z="False" >
+        <user_data type="IDPropertyGroup" name="cycles" value='&lt;bpy id prop: owner="MECircle.014", name="cycles", address=0x000000000E9AAF28&gt;' />
+      </entity>
+    </node>
+    <node name="RimHolder.001" >
+      <position y="6.117114" x="-2.099258" z="1.935210" />
+      <rotation qy="-0.671004" qx="0.036417" qz="-0.126855" qw="0.729613" />
+      <scale y="1.000000" x="1.000000" z="1.000000" />
+      <user_data type="IDPropertyGroup" name="cycles_visibility" value='&lt;bpy id prop: owner="OBRimHolder.001", name="cycles_visibility", address=0x000000000E9A73D8&gt;' />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity anisotropic_friction="False" lock_trans_y="False" damping_trans="0.03999999910593033" damping_rot="0.10000000149011612" inertia_tensor="0.4000000059604645" actor="False" velocity_min="0.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" meshFile="Circle.013.mesh" friction_y="1.0" friction_x="1.0" friction_z="1.0" velocity_max="0.0" ghost="False" name="Circle.013" mass_radius="1.0" mass="1.0" lock_rot_x="False" lock_rot_y="False" lock_rot_z="False" >
+        <user_data type="IDPropertyGroup" name="cycles" value='&lt;bpy id prop: owner="MECircle.013", name="cycles", address=0x000000000E9A8008&gt;' />
+      </entity>
+      <node name="RimHolderEmpt.001" >
+        <position y="0.000000" x="-0.000000" z="-0.000000" />
+        <rotation qy="-0.500000" qx="-0.000000" qz="0.000000" qw="0.866025" />
+        <scale y="1.000000" x="1.000000" z="1.000000" />
+        <game >
+          <sensors />
+          <actuators />
+        </game>
+      </node>
+    </node>
+    <node name="DrumBody.001" >
+      <position y="6.236025" x="-2.082473" z="1.962731" />
+      <rotation qy="-0.671004" qx="0.036417" qz="-0.126855" qw="0.729613" />
+      <scale y="1.000902" x="0.999811" z="0.999812" />
+      <user_data type="IDPropertyGroup" name="cycles_visibility" value='&lt;bpy id prop: owner="OBDrumBody.001", name="cycles_visibility", address=0x000000000E9A3548&gt;' />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity anisotropic_friction="False" lock_trans_y="False" damping_trans="0.03999999910593033" damping_rot="0.10000000149011612" inertia_tensor="0.4000000059604645" actor="False" velocity_min="0.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" meshFile="Circle.012.mesh" friction_y="1.0" friction_x="1.0" friction_z="1.0" velocity_max="0.0" ghost="False" name="Circle.012" mass_radius="1.0" mass="1.0" lock_rot_x="False" lock_rot_y="False" lock_rot_z="False" >
+        <user_data type="IDPropertyGroup" name="cycles" value='&lt;bpy id prop: owner="MECircle.012", name="cycles", address=0x000000000E9A9AD8&gt;' />
+      </entity>
+    </node>
+    <node name="RimClamps.001" >
+      <position y="6.117226" x="-2.099242" z="1.935236" />
+      <rotation qy="-0.671004" qx="0.036417" qz="-0.126855" qw="0.729613" />
+      <scale y="1.000000" x="1.000000" z="1.000000" />
+      <user_data type="IDPropertyGroup" name="cycles_visibility" value='&lt;bpy id prop: owner="OBRimClamps.001", name="cycles_visibility", address=0x000000000E9A6608&gt;' />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity anisotropic_friction="False" lock_trans_y="False" damping_trans="0.03999999910593033" damping_rot="0.10000000149011612" inertia_tensor="0.4000000059604645" actor="False" velocity_min="0.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" meshFile="Circle.008.mesh" friction_y="1.0" friction_x="1.0" friction_z="1.0" velocity_max="0.0" ghost="False" name="Circle.008" mass_radius="1.0" mass="1.0" lock_rot_x="False" lock_rot_y="False" lock_rot_z="False" >
+        <user_data type="IDPropertyGroup" name="cycles" value='&lt;bpy id prop: owner="MECircle.008", name="cycles", address=0x000000000E9A74A8&gt;' />
+      </entity>
+      <node name="RimClampEmpt.001" >
+        <position y="0.000000" x="0.000000" z="-0.000000" />
+        <rotation qy="-0.500000" qx="-0.000000" qz="0.000000" qw="0.866025" />
+        <scale y="1.000000" x="1.000000" z="1.000000" />
+        <game >
+          <sensors />
+          <actuators />
+        </game>
+      </node>
+    </node>
+    <node name="DrumMount.001" >
+      <position y="6.711760" x="-2.120969" z="0.990485" />
+      <rotation qy="-0.671004" qx="0.036417" qz="-0.126855" qw="0.729613" />
+      <scale y="0.760943" x="0.749973" z="0.749973" />
+      <user_data type="IDPropertyGroup" name="cycles_visibility" value='&lt;bpy id prop: owner="OBDrumMount.001", name="cycles_visibility", address=0x000000000E9A3068&gt;' />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity anisotropic_friction="False" lock_trans_y="False" damping_trans="0.03999999910593033" damping_rot="0.10000000149011612" inertia_tensor="0.4000000059604645" actor="False" velocity_min="0.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" meshFile="Circle.007.mesh" friction_y="1.0" friction_x="1.0" friction_z="1.0" velocity_max="0.0" ghost="False" name="Circle.007" mass_radius="1.0" mass="1.0" lock_rot_x="False" lock_rot_y="False" lock_rot_z="False" >
+        <user_data type="IDPropertyGroup" name="cycles" value='&lt;bpy id prop: owner="MECircle.007", name="cycles", address=0x000000000E9A6EF8&gt;' />
+      </entity>
+    </node>
+    <node name="HolderScrew.001" >
+      <position y="6.701144" x="-2.146396" z="0.798429" />
+      <rotation qy="-0.473581" qx="0.066153" qz="-0.114202" qw="0.870806" />
+      <scale y="1.000000" x="1.000000" z="1.000000" />
+      <user_data type="IDPropertyGroup" name="cycles_visibility" value='&lt;bpy id prop: owner="OBHolderScrew.001", name="cycles_visibility", address=0x000000000E9A1F58&gt;' />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity anisotropic_friction="False" lock_trans_y="False" damping_trans="0.03999999910593033" damping_rot="0.10000000149011612" inertia_tensor="0.4000000059604645" actor="False" velocity_min="0.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" meshFile="Circle.006.mesh" friction_y="1.0" friction_x="1.0" friction_z="1.0" velocity_max="0.0" ghost="False" name="Circle.006" mass_radius="1.0" mass="1.0" lock_rot_x="False" lock_rot_y="False" lock_rot_z="False" >
+        <user_data type="IDPropertyGroup" name="cycles" value='&lt;bpy id prop: owner="MECircle.006", name="cycles", address=0x000000000E9A6BB8&gt;' />
+      </entity>
+    </node>
+    <node name="DrumBody.002" >
+      <position y="1.439680" x="-1.056894" z="-0.000409" />
+      <rotation qy="0.000000" qx="-0.000000" qz="0.000000" qw="1.000000" />
+      <scale y="0.760943" x="0.749973" z="0.749973" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity anisotropic_friction="False" lock_trans_y="False" damping_trans="0.03999999910593033" damping_rot="0.10000000149011612" inertia_tensor="0.4000000059604645" actor="False" velocity_min="0.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" meshFile="Circle.002.mesh" friction_y="1.0" friction_x="1.0" friction_z="1.0" velocity_max="0.0" ghost="False" name="Circle.002" mass_radius="1.0" mass="1.0" lock_rot_x="False" lock_rot_y="False" lock_rot_z="False" />
+    </node>
+    <node name="Circle" >
+      <position y="6.453263" x="-1.760238" z="0.000000" />
+      <rotation qy="-0.998121" qx="-0.000000" qz="0.000000" qw="0.061274" />
+      <scale y="0.270198" x="0.270198" z="0.270198" />
+      <user_data type="IDPropertyGroup" name="cycles_visibility" value='&lt;bpy id prop: owner="OBCircle", name="cycles_visibility", address=0x000000000E9A0488&gt;' />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity anisotropic_friction="False" lock_trans_y="False" damping_trans="0.03999999910593033" damping_rot="0.10000000149011612" inertia_tensor="0.4000000059604645" actor="False" velocity_min="0.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" meshFile="Circle.011.mesh" friction_y="1.0" friction_x="1.0" friction_z="1.0" velocity_max="0.0" ghost="False" name="Circle.011" mass_radius="1.0" mass="1.0" lock_rot_x="False" lock_rot_y="False" lock_rot_z="False" >
+        <user_data type="IDPropertyGroup" name="cycles" value='&lt;bpy id prop: owner="MECircle.011", name="cycles", address=0x000000000E9A5B78&gt;' />
+      </entity>
+    </node>
+    <node name="HolderScrew" >
+      <position y="6.474784" x="-1.331584" z="0.148659" />
+      <rotation qy="0.107570" qx="0.051848" qz="-0.031765" qw="0.992337" />
+      <scale y="1.150000" x="1.150000" z="1.150000" />
+      <user_data type="IDPropertyGroup" name="cycles_visibility" value='&lt;bpy id prop: owner="OBHolderScrew", name="cycles_visibility", address=0x000000000E9A2918&gt;' />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity anisotropic_friction="False" lock_trans_y="False" damping_trans="0.03999999910593033" damping_rot="0.10000000149011612" inertia_tensor="0.4000000059604645" actor="False" velocity_min="0.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" meshFile="Circle.010.mesh" friction_y="1.0" friction_x="1.0" friction_z="1.0" velocity_max="0.0" ghost="False" name="Circle.010" mass_radius="1.0" mass="1.0" lock_rot_x="False" lock_rot_y="False" lock_rot_z="False" >
+        <user_data type="IDPropertyGroup" name="cycles" value='&lt;bpy id prop: owner="MECircle.010", name="cycles", address=0x000000000E9A5AA8&gt;' />
+      </entity>
+    </node>
+    <node name="DrumMount" >
+      <position y="6.701793" x="-1.123704" z="0.260049" />
+      <rotation qy="-0.136065" qx="0.113242" qz="-0.046047" qw="0.983129" />
+      <scale y="0.875084" x="0.862469" z="0.862469" />
+      <user_data type="IDPropertyGroup" name="cycles_visibility" value='&lt;bpy id prop: owner="OBDrumMount", name="cycles_visibility", address=0x000000000E9A2848&gt;' />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity anisotropic_friction="False" lock_trans_y="False" damping_trans="0.03999999910593033" damping_rot="0.10000000149011612" inertia_tensor="0.4000000059604645" actor="False" velocity_min="0.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" meshFile="Circle.009.mesh" friction_y="1.0" friction_x="1.0" friction_z="1.0" velocity_max="0.0" ghost="False" name="Circle.009" mass_radius="1.0" mass="1.0" lock_rot_x="False" lock_rot_y="False" lock_rot_z="False" >
+        <user_data type="IDPropertyGroup" name="cycles" value='&lt;bpy id prop: owner="MECircle.009", name="cycles", address=0x000000000E9A5768&gt;' />
+      </entity>
+    </node>
+    <node name="BassTopMnt" >
+      <position y="5.153175" x="-2.056495" z="0.000000" />
+      <rotation qy="0.000000" qx="-0.000000" qz="0.000000" qw="1.000000" />
+      <scale y="0.152166" x="0.152166" z="0.152166" />
+      <user_data type="IDPropertyGroup" name="cycles_visibility" value='&lt;bpy id prop: owner="OBBassTopMnt", name="cycles_visibility", address=0x000000000E99FE08&gt;' />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity anisotropic_friction="False" lock_trans_y="False" damping_trans="0.03999999910593033" damping_rot="0.10000000149011612" inertia_tensor="0.4000000059604645" actor="False" velocity_min="0.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" meshFile="Circle.001.mesh" friction_y="1.0" friction_x="1.0" friction_z="1.0" velocity_max="0.0" ghost="False" name="Circle.001" mass_radius="1.0" mass="1.0" lock_rot_x="False" lock_rot_y="False" lock_rot_z="False" >
+        <user_data type="IDPropertyGroup" name="cycles" value='&lt;bpy id prop: owner="MECircle.001", name="cycles", address=0x000000000E9A5288&gt;' />
+      </entity>
+    </node>
+    <node name="RimClamps" >
+      <position y="6.152766" x="0.016722" z="0.475666" />
+      <rotation qy="-0.136065" qx="0.113242" qz="-0.046047" qw="0.983129" />
+      <scale y="1.150000" x="1.150000" z="1.150000" />
+      <user_data type="IDPropertyGroup" name="cycles_visibility" value='&lt;bpy id prop: owner="OBRimClamps", name="cycles_visibility", address=0x000000000E9A2F98&gt;' />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity anisotropic_friction="False" lock_trans_y="False" damping_trans="0.03999999910593033" damping_rot="0.10000000149011612" inertia_tensor="0.4000000059604645" actor="False" velocity_min="0.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" meshFile="Circle.005.mesh" friction_y="1.0" friction_x="1.0" friction_z="1.0" velocity_max="0.0" ghost="False" name="Circle.005" mass_radius="1.0" mass="1.0" lock_rot_x="False" lock_rot_y="False" lock_rot_z="False" >
+        <user_data type="IDPropertyGroup" name="cycles" value='&lt;bpy id prop: owner="MECircle.005", name="cycles", address=0x000000000E9A55C8&gt;' />
+      </entity>
+      <node name="RimClampEmpt" >
+        <position y="-0.000001" x="0.000000" z="-0.000000" />
+        <rotation qy="-0.500000" qx="-0.000000" qz="-0.000000" qw="0.866025" />
+        <scale y="1.000000" x="1.000000" z="1.000000" />
+        <game >
+          <sensors />
+          <actuators />
+        </game>
+      </node>
+    </node>
+    <node name="RimHolderProto" >
+      <position y="0.696999" x="-0.000000" z="-0.000000" />
+      <rotation qy="-0.000000" qx="-1.000000" qz="-0.000000" qw="-0.000000" />
+      <scale y="1.000000" x="1.000000" z="1.000000" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity anisotropic_friction="False" lock_trans_y="False" damping_trans="0.03999999910593033" damping_rot="0.10000000149011612" inertia_tensor="0.4000000059604645" actor="False" velocity_min="0.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" meshFile="Circle.004.mesh" friction_y="1.0" friction_x="1.0" friction_z="1.0" velocity_max="0.0" ghost="False" name="Circle.004" mass_radius="1.0" mass="1.0" lock_rot_x="False" lock_rot_y="False" lock_rot_z="False" />
+      <node name="RimHolderProtoEmpt" >
+        <position y="0.000000" x="0.000000" z="0.000000" />
+        <rotation qy="-0.500000" qx="0.000000" qz="0.000000" qw="0.866025" />
+        <scale y="1.000000" x="1.000000" z="1.000000" />
+        <game >
+          <sensors />
+          <actuators />
+        </game>
+      </node>
+    </node>
+    <node name="DrumBody" >
+      <position y="6.290086" x="0.025176" z="0.508958" />
+      <rotation qy="-0.136065" qx="0.113242" qz="-0.046047" qw="0.983129" />
+      <scale y="1.151038" x="1.149783" z="1.149783" />
+      <user_data type="IDPropertyGroup" name="cycles_visibility" value='&lt;bpy id prop: owner="OBDrumBody", name="cycles_visibility", address=0x000000000E9A3208&gt;' />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity anisotropic_friction="False" lock_trans_y="False" damping_trans="0.03999999910593033" damping_rot="0.10000000149011612" inertia_tensor="0.4000000059604645" actor="False" velocity_min="0.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" meshFile="Circle.mesh" friction_y="1.0" friction_x="1.0" friction_z="1.0" velocity_max="0.0" ghost="False" name="Circle" mass_radius="1.0" mass="1.0" lock_rot_x="False" lock_rot_y="False" lock_rot_z="False" >
+        <user_data type="IDPropertyGroup" name="cycles" value='&lt;bpy id prop: owner="MECircle", name="cycles", address=0x000000000E9A5908&gt;' />
+      </entity>
+    </node>
+    <node name="RimHolder" >
+      <position y="6.152637" x="0.016714" z="0.475635" />
+      <rotation qy="-0.136065" qx="0.113242" qz="-0.046047" qw="0.983129" />
+      <scale y="1.150000" x="1.150000" z="1.150000" />
+      <user_data type="IDPropertyGroup" name="cycles_visibility" value='&lt;bpy id prop: owner="OBRimHolder", name="cycles_visibility", address=0x000000000E9A54F8&gt;' />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <entity anisotropic_friction="False" lock_trans_y="False" damping_trans="0.03999999910593033" damping_rot="0.10000000149011612" inertia_tensor="0.4000000059604645" actor="False" velocity_min="0.0" lock_trans_z="False" physics_type="STATIC" lock_trans_x="False" meshFile="Circle.003.mesh" friction_y="1.0" friction_x="1.0" friction_z="1.0" velocity_max="0.0" ghost="False" name="Circle.003" mass_radius="1.0" mass="1.0" lock_rot_x="False" lock_rot_y="False" lock_rot_z="False" >
+        <user_data type="IDPropertyGroup" name="cycles" value='&lt;bpy id prop: owner="MECircle.003", name="cycles", address=0x000000000E9A7578&gt;' />
+      </entity>
+      <node name="RimHolderEmpt" >
+        <position y="-0.000000" x="0.000000" z="-0.000000" />
+        <rotation qy="-0.500000" qx="-0.000000" qz="-0.000000" qw="0.866025" />
+        <scale y="1.000000" x="1.000000" z="1.000000" />
+        <game >
+          <sensors />
+          <actuators />
+        </game>
+      </node>
+    </node>
+    <node name="Camera" >
+      <position y="6.983470" x="-9.918684" z="-15.788502" />
+      <rotation qy="0.164920" qx="-0.648596" qz="0.154619" qw="0.726786" />
+      <scale y="1.000000" x="1.000000" z="1.000000" />
+      <game >
+        <sensors />
+        <actuators />
+      </game>
+      <camera projectionType="perspective" fov="0.8575560548920329" name="Camera" >
+        <clipping far="100.0" nearPlaneDist="0.10000000149011612" near="0.10000000149011612" farPlaneDist="100.0" />
+      </camera>
+    </node>
+  </nodes>
+  <externals >
+    <item type="material" >
+      <file name="C:\Users\Eduardo\OneDrive\Copy\Facens\Engenharia da Computação\7º Semestre\Computação Gráfica II - Laboratório\Projeto_Eduardo\DrummerPlayer\assets\Models\BlackPlastic.material" />
+    </item>
+    <item type="material" >
+      <file name="C:\Users\Eduardo\OneDrive\Copy\Facens\Engenharia da Computação\7º Semestre\Computação Gráfica II - Laboratório\Projeto_Eduardo\DrummerPlayer\assets\Models\Chrome.material" />
+    </item>
+    <item type="material" >
+      <file name="C:\Users\Eduardo\OneDrive\Copy\Facens\Engenharia da Computação\7º Semestre\Computação Gráfica II - Laboratório\Projeto_Eduardo\DrummerPlayer\assets\Models\BlueVeneer.material" />
+    </item>
+    <item type="material" >
+      <file name="C:\Users\Eduardo\OneDrive\Copy\Facens\Engenharia da Computação\7º Semestre\Computação Gráfica II - Laboratório\Projeto_Eduardo\DrummerPlayer\assets\Models\Brass.material" />
+    </item>
+  </externals>
+  <environment >
+    <colourBackground r="0.05087608844041824" b="0.05087608844041824" g="0.05087608844041824" />
+    <colourAmbient r="0.0" b="0.0" g="0.0" />
+    <colourDiffuse r="0.05087608844041824" b="0.05087608844041824" g="0.05087608844041824" />
+  </environment>
+</scene>
