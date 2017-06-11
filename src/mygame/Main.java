@@ -32,6 +32,10 @@ public class Main extends SimpleApplication {
     private boolean initialPratoDireito  = false;
     private long timeInitialPratoDireito = 0l;
     private int directionPratoDireito    = 1;
+
+    private boolean initialPratoPequeno  = false;
+    private long timeInitialPratoPequeno = 0l;
+    private int directionPratoPequeno    = 1;
     
     public static void main(String[] args) {
         Main app = new Main();
@@ -46,11 +50,21 @@ public class Main extends SimpleApplication {
         model.scale(0.5f, 0.5f, 0.5f);
         
         //Models/drums_current8-scene_node/Cymbal.001/Circle.030-entity/Circle.030-ogremesh
+    
+        criarCaixaEsquerda();
         
+        
+        criarPratoPequeno();
         criarPratoEsquerdo();
         criarPratoDireito();
         
-
+        criarPedestalEsquerdo();
+        criarPedestalDireito();
+        
+        Spatial pratoPequeno = rootNode.getChild("Prato_Pequeno");
+        pratoPequeno.setLocalTranslation(0, -1, 0);
+        
+        
         //rootNode.attachChild(model);
                 
         /** A white ambient light source. */ 
@@ -69,6 +83,7 @@ public class Main extends SimpleApplication {
                 
         movimentaPratoEsquerdo(tpf);
         movimentaPratoDireito(tpf);
+        //movimentaPratoPequeno(tpf);
         
         /*System.out.println("X: " + rotation.getX() + 
                 " Y: " + rotation.getY() + 
@@ -83,6 +98,77 @@ public class Main extends SimpleApplication {
         //TODO: add render code
     }
     
+    
+    private void criarCaixaEsquerda() {
+    
+        Spatial caixaEsquerda = assetManager.loadModel("Models/Circle.012.mesh.j3o");
+        
+        Material boxMat = new Material(assetManager, "Common/MatDefs/Light/Lighting.j3md");
+        boxMat.setColor("Ambient", ColorRGBA.Brown); 
+        boxMat.setBoolean("UseMaterialColors", true); 
+        caixaEsquerda.setMaterial(boxMat);
+        caixaEsquerda.setName("Caixa_Esquerda");
+
+        caixaEsquerda.scale(0.5f);
+        caixaEsquerda.rotate(0, 0, 15f);
+        caixaEsquerda.setLocalTranslation(-1f, -0.5f, -1);
+        
+        
+        rootNode.attachChild(caixaEsquerda);
+    
+    }
+    
+    
+    
+    
+    
+    
+    private void criarPratoPequeno() {
+        Spatial pratoPequeno = assetManager.loadModel("Models/Circle.032.mesh.j3o");
+        
+        Material boxMat = new Material(assetManager, "Common/MatDefs/Light/Lighting.j3md");
+        boxMat.setColor("Ambient", ColorRGBA.Yellow); 
+        boxMat.setBoolean("UseMaterialColors", true); 
+        pratoPequeno.setMaterial(boxMat);
+        pratoPequeno.setName("Prato_Pequeno");
+        pratoPequeno.rotate(0, 0, -0.4f);
+        
+        rootNode.attachChild(pratoPequeno);
+    }
+    
+    
+    private void criarPedestalEsquerdo() {
+        Spatial pedestalPratoEsquerdo = assetManager.loadModel("Models/Circle.023.mesh.j3o");
+        pedestalPratoEsquerdo.scale(0.1f);
+        
+        Material boxMat = new Material(assetManager, "Common/MatDefs/Light/Lighting.j3md");
+        boxMat.setColor("Ambient", ColorRGBA.LightGray); 
+        boxMat.setBoolean("UseMaterialColors", true); 
+        pedestalPratoEsquerdo.setMaterial(boxMat);
+        pedestalPratoEsquerdo.setName("Pedestal_Prato_Esquerdo");
+        pedestalPratoEsquerdo.rotate(0, 0, -0.4f);
+        
+        pedestalPratoEsquerdo.setLocalTranslation(-0.4f, -0.8f, 0);
+        
+        rootNode.attachChild(pedestalPratoEsquerdo);
+    }
+    
+    
+    private void criarPedestalDireito() {
+        Spatial pedestalPratoDireito = assetManager.loadModel("Models/Circle.023.mesh.j3o");
+        pedestalPratoDireito.scale(0.1f);
+        
+        Material boxMat = new Material(assetManager, "Common/MatDefs/Light/Lighting.j3md");
+        boxMat.setColor("Ambient", ColorRGBA.LightGray); 
+        boxMat.setBoolean("UseMaterialColors", true); 
+        pedestalPratoDireito.setMaterial(boxMat);
+        pedestalPratoDireito.setName("Pedestal_Prato_Esquerdo");
+        pedestalPratoDireito.rotate(0, 0, -0.4f);
+        
+        pedestalPratoDireito.setLocalTranslation(-5.0f, -1f, 0);
+        
+        rootNode.attachChild(pedestalPratoDireito);
+    }
     
     
     
@@ -113,6 +199,32 @@ public class Main extends SimpleApplication {
         
         rootNode.attachChild(pratoDireito);
 
+    }
+    
+    private void movimentaPratoPequeno (float tpf) {
+        Spatial pratoPequeno = rootNode.getChild("Prato_Pequeno");
+        
+        long time = System.currentTimeMillis() - timeInitialPratoPequeno;
+        
+        if (time < TIME_MIN_SECONDS) {
+            pratoPequeno.setLocalTranslation(0, tpf * directionPratoPequeno, 0);
+        }
+        
+        if (time >= TIME_MIN_SECONDS) {
+            if (!initialPratoPequeno) {
+                initialPratoPequeno    = true;
+                directionPratoPequeno *= (-1);
+            }
+            pratoPequeno.setLocalTranslation(0, tpf * directionPratoPequeno, 0);
+        }
+        
+        if (time > TIME_MAX_SECONDS) {
+            initialPratoPequeno     = false;
+            timeInitialPratoPequeno = System.currentTimeMillis();
+            directionPratoPequeno  *= (-1);
+        }
+        
+        pratoPequeno.rotate(0, tpf * directionPratoPequeno, 0);
     }
     
     
