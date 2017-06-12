@@ -34,6 +34,8 @@ public class PratoEsquerdo extends DrummerAbstract {
         pratoEsquerdo.setName(this.getName());
         pratoEsquerdo.rotate(0, 0, -0.4f);
         
+        pratoEsquerdo.setLocalTranslation(0, -1f, 0);
+        
         rootNode.attachChild(pratoEsquerdo);
     }
 
