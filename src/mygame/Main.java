@@ -133,12 +133,13 @@ public class Main extends SimpleApplication {
     private void initKeys() {
         // You can map one or several inputs to one named action
         inputManager.addMapping("Pause", new KeyTrigger(KeyInput.KEY_P));
+        inputManager.addMapping("Sair", new KeyTrigger(KeyInput.KEY_Q));
         inputManager.addMapping("Rotate_Left", new KeyTrigger(KeyInput.KEY_L),
                 new MouseButtonTrigger(MouseInput.BUTTON_LEFT));
         inputManager.addMapping("Rotate_Right", new KeyTrigger(keyInput.KEY_R),
                 new MouseButtonTrigger(MouseInput.BUTTON_RIGHT));
         // Add the names to the action listener.
-        inputManager.addListener(actionListener, "Pause");
+        inputManager.addListener(actionListener, "Pause", "Sair");
         inputManager.addListener(analogListener, "Rotate_Left", "Rotate_Right");
 
     }
@@ -148,8 +149,15 @@ public class Main extends SimpleApplication {
         public void onAction(String name, boolean keyPressed, float tpf) {
             if (name.equals("Pause") && !keyPressed) {
                 setIsRunning(!isIsRunning());
-                System.out.println("Tecl P foi pressionada");
+                System.out.println("Tecla P foi pressionada");
             }
+            
+            if (name.equals("Sair") && !keyPressed) {
+                System.exit(0);
+                System.out.println("Tecla Q foi pressionada");
+            }
+            
+            
         }
     };
 
@@ -158,10 +166,12 @@ public class Main extends SimpleApplication {
             if (isIsRunning()) {
                 if (name.equals("Rotate_Left")) {
                     rootNode.rotate(0, value * speed * (-1), 0);
+                    System.out.println("Rotação Esquerda");
                 }
                 
                 if (name.equals("Rotate_Right")) {
                     rootNode.rotate(0, (value * speed), 0);
+                    System.out.println("Rotação Direita");
                 }
                                 
             }
