@@ -26,6 +26,8 @@ public class PratoDireito extends DrummerAbstract {
     @Override
     public void criarObjeto(ColorRGBA color, Node rootNode, AssetManager assetManager) {
         Spatial pratoDireito = assetManager.loadModel("Models/Circle.030.mesh.j3o");
+
+        this.setObjeto(pratoDireito);
         
         Material boxMat = new Material(assetManager, "Common/MatDefs/Light/Lighting.j3md");
         boxMat.setColor("Ambient", color); 

@@ -23,6 +23,8 @@ public abstract class DrummerAbstract {
     private long timeInitial = 0l;
     private int direction    = 1;
     private String name      = "";
+    
+    private Spatial objeto;
 
     public DrummerAbstract(String name) {
         this.setName(name);
@@ -58,6 +60,14 @@ public abstract class DrummerAbstract {
 
     private void setName(String name) {
         this.name = name;
+    }
+
+    public Spatial getObjeto() {
+        return objeto;
+    }
+
+    public void setObjeto(Spatial objeto) {
+        this.objeto = objeto;
     }
     
     public void objTranslation(Spatial obj,float x, float y, float z) {
