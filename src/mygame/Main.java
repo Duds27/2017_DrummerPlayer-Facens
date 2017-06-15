@@ -5,6 +5,8 @@ import br.facens.model.objects.PratoEsquerdo;
 import br.facens.models.config.KeyBinding;
 import br.facens.models.interfaces.DrummerAbstract;
 import com.jme3.app.SimpleApplication;
+import com.jme3.audio.AudioData.DataType;
+import com.jme3.audio.AudioNode;
 import com.jme3.input.KeyInput;
 import com.jme3.input.MouseInput;
 import com.jme3.input.controls.ActionListener;
@@ -15,7 +17,6 @@ import com.jme3.light.AmbientLight;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Matrix3f;
-import com.jme3.math.Quaternion;
 import com.jme3.renderer.RenderManager;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Spatial;
@@ -36,9 +37,14 @@ public class Main extends SimpleApplication {
 
     private boolean isRunning;
     private List<Spatial> listaObj;
-    
+
+    private AudioNode audio_gun;
+    private AudioNode audio_nature;
+
     private DrummerAbstract pratoEsquerdo;
     private DrummerAbstract pratoDireito;
+    
+    private boolean mexerPratoEsquerdo;
 
     public boolean isIsRunning() {
         return isRunning;
@@ -60,6 +66,21 @@ public class Main extends SimpleApplication {
         this.listaObj = listaObj;
     }
 
+    public AudioNode getAudio_gun() {
+        return audio_gun;
+    }
+
+    public void setAudio_gun(AudioNode audio_gun) {
+        this.audio_gun = audio_gun;
+    }
+
+    public AudioNode getAudio_nature() {
+        return audio_nature;
+    }
+
+    public void setAudio_nature(AudioNode audio_nature) {
+        this.audio_nature = audio_nature;
+    }
     
     public void setPratoEsquerdo(DrummerAbstract pratoEsquerdo) {
         this.pratoEsquerdo = pratoEsquerdo;
@@ -73,6 +94,14 @@ public class Main extends SimpleApplication {
         this.pratoDireito = pratoDireito;
     }
 
+    public boolean isMexerPratoEsquerdo() {
+        return mexerPratoEsquerdo;
+    }
+
+    public void setMexerPratoEsquerdo(boolean mexerPratoEsquerdo) {
+        this.mexerPratoEsquerdo = mexerPratoEsquerdo;
+    }
+    
     public static void main(String[] args) {
         Main app = new Main();
         app.showSettings = false;
@@ -83,6 +112,7 @@ public class Main extends SimpleApplication {
     public void simpleInitApp() {
 
         this.setIsRunning(true);
+        this.setMexerPratoEsquerdo(false);
 
         Spatial model = assetManager.loadModel("Models/drums_current8.j3o");
         model.scale(0.5f, 0.5f, 0.5f);
@@ -110,16 +140,22 @@ public class Main extends SimpleApplication {
 
         //KeyBinding keys = new KeyBinding(inputManager, speed, listaObj);
         initKeys(); // load my custom keybinding
-
+        initAudio();
     }
 
     @Override
     public void simpleUpdate(float tpf) {
         //TODO: add update code
 
+        listener.setLocation(cam.getLocation());
+        listener.setRotation(cam.getRotation());
+        
+        if (this.isMexerPratoEsquerdo()) {
+            this.getPratoEsquerdo().movimentaObjeto(rootNode, tpf);
+        }
+        
         //this.getPratoEsquerdo().movimentaObjeto(rootNode, tpf);
         //this.getPratoDireito().movimentaObjeto(rootNode, tpf);
-
     }
 
     @Override
@@ -138,12 +174,32 @@ public class Main extends SimpleApplication {
                 new MouseButtonTrigger(MouseInput.BUTTON_LEFT));
         inputManager.addMapping("Rotate_Right", new KeyTrigger(keyInput.KEY_R),
                 new MouseButtonTrigger(MouseInput.BUTTON_RIGHT));
+        inputManager.addMapping("Prato_Esquerdo_Batida", new KeyTrigger(KeyInput.KEY_F));
         // Add the names to the action listener.
         inputManager.addListener(actionListener, "Pause", "Sair");
         inputManager.addListener(analogListener, "Rotate_Left", "Rotate_Right");
-
+        inputManager.addListener(actionListener, "Prato_Esquerdo_Batida");
     }
-        
+
+    /**
+     * We create two audio nodes.
+     */
+    private void initAudio() {
+        /* gun shot sound is to be triggered by a mouse click. */
+        audio_gun = new AudioNode(assetManager, "Sounds/prato-agudo.wav", DataType.Buffer);
+        audio_gun.setPositional(false);
+        audio_gun.setLooping(false);
+        audio_gun.setVolume(2);
+        rootNode.attachChild(audio_gun);
+
+        /* nature sound - keeps playing in a loop. */
+        audio_nature = new AudioNode(assetManager, "Sounds/pedal.wav", DataType.Stream);
+        audio_nature.setLooping(true);  // activate continuous playing
+        audio_nature.setPositional(false);
+        audio_nature.setVolume(3);
+        rootNode.attachChild(audio_nature);
+        audio_nature.play(); // play continuously!
+    }
 
     private ActionListener actionListener = new ActionListener() {
         public void onAction(String name, boolean keyPressed, float tpf) {
@@ -151,13 +207,17 @@ public class Main extends SimpleApplication {
                 setIsRunning(!isIsRunning());
                 System.out.println("Tecla P foi pressionada");
             }
-            
+
             if (name.equals("Sair") && !keyPressed) {
                 System.exit(0);
                 System.out.println("Tecla Q foi pressionada");
             }
             
-            
+            if (name.equals("Prato_Esquerdo_Batida") && !keyPressed) {
+                audio_gun.playInstance();; // play each instance once!
+                setMexerPratoEsquerdo(true);
+            }
+
         }
     };
 
@@ -168,12 +228,12 @@ public class Main extends SimpleApplication {
                     rootNode.rotate(0, value * speed * (-1), 0);
                     System.out.println("Rotação Esquerda");
                 }
-                
+
                 if (name.equals("Rotate_Right")) {
                     rootNode.rotate(0, (value * speed), 0);
                     System.out.println("Rotação Direita");
                 }
-                                
+
             }
         }
     };
