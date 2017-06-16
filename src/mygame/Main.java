@@ -45,6 +45,9 @@ public class Main extends SimpleApplication {
     private DrummerAbstract pratoDireito;
     
     private boolean mexerPratoEsquerdo;
+    private boolean PratoEsquerdoAux = false;
+    
+    private long tempoInicialPratoEsquerdo;
 
     public boolean isIsRunning() {
         return isRunning;
@@ -101,6 +104,14 @@ public class Main extends SimpleApplication {
     public void setMexerPratoEsquerdo(boolean mexerPratoEsquerdo) {
         this.mexerPratoEsquerdo = mexerPratoEsquerdo;
     }
+
+    public long getTempoInicialPratoEsquerdo() {
+        return tempoInicialPratoEsquerdo;
+    }
+
+    public void setTempoInicialPratoEsquerdo(long tempoInicialPratoEsquerdo) {
+        this.tempoInicialPratoEsquerdo = tempoInicialPratoEsquerdo;
+    }
     
     public static void main(String[] args) {
         Main app = new Main();
@@ -150,9 +161,30 @@ public class Main extends SimpleApplication {
         listener.setLocation(cam.getLocation());
         listener.setRotation(cam.getRotation());
         
+        
+        
         if (this.isMexerPratoEsquerdo()) {
-            this.getPratoEsquerdo().movimentaObjeto(rootNode, tpf);
+            
+            long tempoAux = System.currentTimeMillis();
+                
+            System.out.println("Tempo: " + Math.abs(tempoAux - tempoInicialPratoEsquerdo));
+                
+            if ( Math.abs(tempoAux - tempoInicialPratoEsquerdo) > 2000 ) {
+                PratoEsquerdoAux = false;                
+                System.out.println("3 segundos! " + Math.abs(tempoAux - tempoInicialPratoEsquerdo));
+                this.setMexerPratoEsquerdo(false);
+                this.getPratoEsquerdo().getObjeto().rotate(0, 0, tpf);
+            }
+            
+            if ( Math.abs(tempoAux - tempoInicialPratoEsquerdo) <= 2000 ) {
+                this.getPratoEsquerdo().movimentaObjeto(rootNode, tpf);
+            }
+            
+            
+            
         }
+        
+        
         
         //this.getPratoEsquerdo().movimentaObjeto(rootNode, tpf);
         //this.getPratoDireito().movimentaObjeto(rootNode, tpf);
@@ -214,8 +246,29 @@ public class Main extends SimpleApplication {
             }
             
             if (name.equals("Prato_Esquerdo_Batida") && !keyPressed) {
-                audio_gun.playInstance();; // play each instance once!
-                setMexerPratoEsquerdo(true);
+                
+                audio_gun.playInstance(); // play each instance once!
+                
+                if (!PratoEsquerdoAux) {
+                    setMexerPratoEsquerdo(true);
+                    //audio_gun.playInstance(); // play each instance once!
+                    tempoInicialPratoEsquerdo = System.currentTimeMillis();
+                    PratoEsquerdoAux          = true;
+                }
+                
+                
+                
+                
+                /*if (!isMexerPratoEsquerdo()) {
+                    setTempoInicialPratoEsquerdo(System.currentTimeMillis());
+                    audio_gun.playInstance(); // play each instance once!
+                }
+                //timer.getTimeInSeconds();
+                long tempoAux = System.currentTimeMillis();
+                if ( (tempoAux - getTempoInicialPratoEsquerdo()) > 3000 )
+                    setMexerPratoEsquerdo(false);
+                else
+                    setMexerPratoEsquerdo(true);*/
             }
 
         }
