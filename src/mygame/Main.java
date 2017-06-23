@@ -31,6 +31,7 @@ public class Main extends SimpleApplication {
 
     private AudioNode audio_prato;
     private AudioNode audio_pedal;
+    private AudioNode audio_caixa_esquerda;
     private AudioNode audio_nature;
 
     private DrummerAbstract bateriaCompleta;
@@ -44,9 +45,13 @@ public class Main extends SimpleApplication {
     private boolean mexerPedal;
     private boolean PedalAux = false;
     
+    private boolean mexerCaixaEsquerda;
+    private boolean CaixaEsquerdaAux = false;
+    
     private long tempoInicialPratoEsquerdo;
     private long tempoInicialPratoDireito;
     private long tempoInicialPedal;
+    private long tempoInicialCaixaEsquerda;
     
     
     private AnimChannel channel;
@@ -70,6 +75,7 @@ public class Main extends SimpleApplication {
         this.setMexerPratoEsquerdo(false);
         this.setMexerPratoDireito(false);
         this.setMexerPedal(false);
+        this.setMexerCaixaEsquerda(false);
 
         
         this.buildDrummer();
@@ -144,6 +150,19 @@ public class Main extends SimpleApplication {
             }            
         }
         
+        // Rotina de movimentação da caixa esquerda
+        if (this.isMexerCaixaEsquerda()) {
+            long tempoAux = System.currentTimeMillis();
+                
+            //System.out.println("Tempo: " + Math.abs(tempoAux - tempoInicialCaixaEsquerda));
+                
+            if ( Math.abs(tempoAux - tempoInicialCaixaEsquerda) > 2000 ) {
+                CaixaEsquerdaAux = false;                
+                System.out.println("3 segundos! " + Math.abs(tempoAux - tempoInicialCaixaEsquerda));
+                this.setMexerCaixaEsquerda(false);
+            }            
+        }
+        
     }
 
     @Override
@@ -162,9 +181,10 @@ public class Main extends SimpleApplication {
         inputManager.addMapping("Rotate_Right", new KeyTrigger(KeyInput.KEY_RIGHT), new MouseButtonTrigger(MouseInput.BUTTON_RIGHT));
         inputManager.addMapping("Rotate_Up", new KeyTrigger(KeyInput.KEY_UP));
         inputManager.addMapping("Rotate_Down", new KeyTrigger(KeyInput.KEY_DOWN));
-        inputManager.addMapping("Prato_Esquerdo_Batida", new KeyTrigger(KeyInput.KEY_F));
-        inputManager.addMapping("Prato_Direito_Batida", new KeyTrigger(KeyInput.KEY_G));
+        inputManager.addMapping("Prato_Esquerdo_Batida", new KeyTrigger(KeyInput.KEY_R));
+        inputManager.addMapping("Prato_Direito_Batida", new KeyTrigger(KeyInput.KEY_Y));
         inputManager.addMapping("Pedal_Batida", new KeyTrigger(KeyInput.KEY_V));
+        inputManager.addMapping("Caixa_Esquerda_Batida", new KeyTrigger(KeyInput.KEY_F));
         
         // Add the names to the action listener.
         inputManager.addListener(actionListener, "Pause", "Sair");
@@ -172,6 +192,7 @@ public class Main extends SimpleApplication {
         inputManager.addListener(actionListener, "Prato_Esquerdo_Batida");
         inputManager.addListener(actionListener, "Prato_Direito_Batida");
         inputManager.addListener(actionListener, "Pedal_Batida");
+        inputManager.addListener(actionListener, "Caixa_Esquerda_Batida");
 
     }
 
@@ -191,6 +212,13 @@ public class Main extends SimpleApplication {
         audio_pedal.setLooping(false);
         audio_pedal.setVolume(2);
         rootNode.attachChild(audio_pedal);
+        
+        
+        audio_caixa_esquerda = new AudioNode(assetManager, "Sounds/caixa-1.wav", DataType.Buffer);
+        audio_caixa_esquerda.setPositional(false);
+        audio_caixa_esquerda.setLooping(false);
+        audio_caixa_esquerda.setVolume(2);
+        rootNode.attachChild(audio_caixa_esquerda);
         
         
 
@@ -244,6 +272,17 @@ public class Main extends SimpleApplication {
                     PedalAux          = true;
                 }                
             }
+            
+            if (name.equals("Caixa_Esquerda_Batida") && !keyPressed) {                
+                audio_caixa_esquerda.playInstance(); // play each instance once!                
+                if (!PedalAux) {
+                    setMexerCaixaEsquerda(true);
+                    //audio_gun.playInstance(); // play each instance once!
+                    tempoInicialCaixaEsquerda = System.currentTimeMillis();
+                    CaixaEsquerdaAux          = true;
+                }                
+            }
+            
             
 
         }
@@ -448,6 +487,38 @@ public class Main extends SimpleApplication {
 
     public void setTempoInicialPedal(long tempoInicialPedal) {
         this.tempoInicialPedal = tempoInicialPedal;
+    }
+
+    public AudioNode getAudio_caixa_esquerda() {
+        return audio_caixa_esquerda;
+    }
+
+    public void setAudio_caixa_esquerda(AudioNode audio_caixa_esquerda) {
+        this.audio_caixa_esquerda = audio_caixa_esquerda;
+    }
+
+    public boolean isMexerCaixaEsquerda() {
+        return mexerCaixaEsquerda;
+    }
+
+    public void setMexerCaixaEsquerda(boolean mexerCaixaEsquerda) {
+        this.mexerCaixaEsquerda = mexerCaixaEsquerda;
+    }
+
+    public boolean isCaixaEsquerdaAux() {
+        return CaixaEsquerdaAux;
+    }
+
+    public void setCaixaEsquerdaAux(boolean CaixaEsquerdaAux) {
+        this.CaixaEsquerdaAux = CaixaEsquerdaAux;
+    }
+
+    public long getTempoInicialCaixaEsquerda() {
+        return tempoInicialCaixaEsquerda;
+    }
+
+    public void setTempoInicialCaixaEsquerda(long tempoInicialCaixaEsquerda) {
+        this.tempoInicialCaixaEsquerda = tempoInicialCaixaEsquerda;
     }
     
     
