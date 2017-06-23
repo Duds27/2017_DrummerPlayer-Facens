@@ -34,6 +34,7 @@ public class Main extends SimpleApplication {
     private AudioNode audio_pedal;
     private AudioNode audio_caixa_esquerda;
     private AudioNode audio_caixa_direita;
+    private AudioNode audio_caixa_central;
     private AudioNode audio_nature;
 
     private DrummerAbstract bateriaCompleta;
@@ -53,11 +54,15 @@ public class Main extends SimpleApplication {
     private boolean mexerCaixaDireita;
     private boolean CaixaDireitaAux = false;
     
+    private boolean mexerCaixaCentral;
+    private boolean CaixaCentralAux = false;
+    
     private long tempoInicialPratoEsquerdo;
     private long tempoInicialPratoDireito;
     private long tempoInicialPedal;
     private long tempoInicialCaixaEsquerda;
     private long tempoInicialCaixaDireita;
+    private long tempoInicialCaixaCentral;
     
     
     private AnimChannel channel;
@@ -87,6 +92,7 @@ public class Main extends SimpleApplication {
         this.setMexerPedal(false);
         this.setMexerCaixaEsquerda(false);
         this.setMexerCaixaDireita(false);
+        this.setMexerCaixaCentral(false);
 
         
         this.buildDrummer();
@@ -187,6 +193,19 @@ public class Main extends SimpleApplication {
             }            
         }
         
+        // Rotina de movimentação da caixa central
+        if (this.isMexerCaixaCentral()) {
+            long tempoAux = System.currentTimeMillis();
+                
+            //System.out.println("Tempo: " + Math.abs(tempoAux - tempoInicialCaixaCentral));
+                
+            if ( Math.abs(tempoAux - tempoInicialCaixaCentral) > 2000 ) {
+                CaixaCentralAux = false;                
+                System.out.println("3 segundos! " + Math.abs(tempoAux - tempoInicialCaixaCentral));
+                this.setMexerCaixaCentral(false);
+            }            
+        }
+        
     }
 
     @Override
@@ -210,6 +229,7 @@ public class Main extends SimpleApplication {
         inputManager.addMapping("Pedal_Batida", new KeyTrigger(KeyInput.KEY_V));
         inputManager.addMapping("Caixa_Esquerda_Batida", new KeyTrigger(KeyInput.KEY_F));
         inputManager.addMapping("Caixa_Direita_Batida", new KeyTrigger(KeyInput.KEY_H));
+        inputManager.addMapping("Caixa_Central_Batida", new KeyTrigger(KeyInput.KEY_G));
         
         // Add the names to the action listener.
         inputManager.addListener(actionListener, "Pause", "Sair");
@@ -219,6 +239,7 @@ public class Main extends SimpleApplication {
         inputManager.addListener(actionListener, "Pedal_Batida");
         inputManager.addListener(actionListener, "Caixa_Esquerda_Batida");
         inputManager.addListener(actionListener, "Caixa_Direita_Batida");
+        inputManager.addListener(actionListener, "Caixa_Central_Batida");
 
     }
 
@@ -251,6 +272,12 @@ public class Main extends SimpleApplication {
         audio_caixa_direita.setLooping(false);
         audio_caixa_direita.setVolume(2);
         rootNode.attachChild(audio_caixa_direita);
+        
+        audio_caixa_central = new AudioNode(assetManager, "Sounds/caixa-2.wav", DataType.Buffer);
+        audio_caixa_central.setPositional(false);
+        audio_caixa_central.setLooping(false);
+        audio_caixa_central.setVolume(2);
+        rootNode.attachChild(audio_caixa_central);
         
         
 
@@ -322,6 +349,16 @@ public class Main extends SimpleApplication {
                     //audio_gun.playInstance(); // play each instance once!
                     tempoInicialCaixaDireita = System.currentTimeMillis();
                     CaixaDireitaAux          = true;
+                }                
+            }
+            
+            if (name.equals("Caixa_Central_Batida") && !keyPressed) {                
+                audio_caixa_central.playInstance(); // play each instance once!                
+                if (!CaixaCentralAux) {
+                    setMexerCaixaCentral(true);
+                    //audio_gun.playInstance(); // play each instance once!
+                    tempoInicialCaixaCentral = System.currentTimeMillis();
+                    CaixaCentralAux          = true;
                 }                
             }
             
@@ -593,6 +630,38 @@ public class Main extends SimpleApplication {
 
     public void setTempoInicialCaixaDireita(long tempoInicialCaixaDireita) {
         this.tempoInicialCaixaDireita = tempoInicialCaixaDireita;
+    }
+
+    public AudioNode getAudio_caixa_central() {
+        return audio_caixa_central;
+    }
+
+    public void setAudio_caixa_central(AudioNode audio_caixa_central) {
+        this.audio_caixa_central = audio_caixa_central;
+    }
+
+    public boolean isMexerCaixaCentral() {
+        return mexerCaixaCentral;
+    }
+
+    public void setMexerCaixaCentral(boolean mexerCaixaCentral) {
+        this.mexerCaixaCentral = mexerCaixaCentral;
+    }
+
+    public boolean isCaixaCentralAux() {
+        return CaixaCentralAux;
+    }
+
+    public void setCaixaCentralAux(boolean CaixaCentralAux) {
+        this.CaixaCentralAux = CaixaCentralAux;
+    }
+
+    public long getTempoInicialCaixaCentral() {
+        return tempoInicialCaixaCentral;
+    }
+
+    public void setTempoInicialCaixaCentral(long tempoInicialCaixaCentral) {
+        this.tempoInicialCaixaCentral = tempoInicialCaixaCentral;
     }
     
     
