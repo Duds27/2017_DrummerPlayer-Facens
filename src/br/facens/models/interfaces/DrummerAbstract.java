@@ -81,7 +81,7 @@ public abstract class DrummerAbstract extends AbstractControl {
         obj.rotate(x, y, z);
     }
     
-    public abstract void criarObjeto(ColorRGBA color, Node rootNode, AssetManager assetManager); 
+    public abstract void criarObjeto(Node rootNode, AssetManager assetManager);
     public abstract void movimentaObjeto(Node rootNode, float tpf);
     
 }

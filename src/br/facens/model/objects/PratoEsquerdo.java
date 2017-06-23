@@ -25,37 +25,7 @@ public class PratoEsquerdo extends DrummerAbstract {
         super(name);
     }
     
-    @Override
-    public void criarObjeto(ColorRGBA color, Node rootNode, AssetManager assetManager) {
-        
-        //Spatial pratoEsquerdo  = assetManager.loadModel("Models/drums_current8-scene_node/Cymbal.001/Circle.030-entity/Circle.030-ogremesh");
-       Spatial pratoEsquerdo  = assetManager.loadModel("Models/Circle.030.mesh.j3o");
-        //Spatial troncoEsquerdo = assetManager.loadModel("Models/Circle.021.mesh.j3o");
-       
-  
-        this.setObjeto(pratoEsquerdo);
-        
-        Material boxMat = new Material(assetManager, "Common/MatDefs/Light/Lighting.j3md");
-        boxMat.setColor("Ambient", color); 
-        boxMat.setBoolean("UseMaterialColors", true); 
-        pratoEsquerdo.setMaterial(boxMat);
-        pratoEsquerdo.setName(this.getName());
-        pratoEsquerdo.rotate(0, 0, -0.4f);
-        
-        pratoEsquerdo.setLocalTranslation(-0.5f, 1f, 0);
-        
-        /*Material boxMat1 = new Material(assetManager, "Common/MatDefs/Light/Lighting.j3md");
-        boxMat1.setColor("Ambient", ColorRGBA.LightGray);
-        boxMat1.setBoolean("UseMaterialColors", true);
-        troncoEsquerdo.setMaterial(boxMat1);
-        troncoEsquerdo.setName(this.getName());
-        troncoEsquerdo.scale(0.25f, 0.255f, 0.25f);
-        
-        troncoEsquerdo.setLocalTranslation(-0.75f, -1.25f, -1.5f);*/
-                
-        rootNode.attachChild(pratoEsquerdo);
-        //rootNode.attachChild(troncoEsquerdo);
-    }
+
 
     @Override
     public void movimentaObjeto(Node rootNode, float tpf) {
@@ -93,6 +63,37 @@ public class PratoEsquerdo extends DrummerAbstract {
     @Override
     protected void controlRender(RenderManager rm, ViewPort vp) {
  //       throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void criarObjeto(Node rootNode, AssetManager assetManager) {
+        //Spatial pratoEsquerdo  = assetManager.loadModel("Models/drums_current8-scene_node/Cymbal.001/Circle.030-entity/Circle.030-ogremesh");
+       Spatial pratoEsquerdo  = assetManager.loadModel("Models/Circle.030.mesh.j3o");
+        //Spatial troncoEsquerdo = assetManager.loadModel("Models/Circle.021.mesh.j3o");
+       
+  
+        this.setObjeto(pratoEsquerdo);
+        
+        Material boxMat = new Material(assetManager, "Common/MatDefs/Light/Lighting.j3md");
+        boxMat.setColor("Ambient", ColorRGBA.Yellow); 
+        boxMat.setBoolean("UseMaterialColors", true); 
+        pratoEsquerdo.setMaterial(boxMat);
+        pratoEsquerdo.setName(this.getName());
+        pratoEsquerdo.rotate(0, 0, -0.4f);
+        
+        pratoEsquerdo.setLocalTranslation(-0.5f, 1f, 0);
+        
+        /*Material boxMat1 = new Material(assetManager, "Common/MatDefs/Light/Lighting.j3md");
+        boxMat1.setColor("Ambient", ColorRGBA.LightGray);
+        boxMat1.setBoolean("UseMaterialColors", true);
+        troncoEsquerdo.setMaterial(boxMat1);
+        troncoEsquerdo.setName(this.getName());
+        troncoEsquerdo.scale(0.25f, 0.255f, 0.25f);
+        
+        troncoEsquerdo.setLocalTranslation(-0.75f, -1.25f, -1.5f);*/
+                
+        rootNode.attachChild(pratoEsquerdo);
+        //rootNode.attachChild(troncoEsquerdo);
     }
     
 }

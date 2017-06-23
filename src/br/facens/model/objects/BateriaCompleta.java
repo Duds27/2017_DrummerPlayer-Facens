@@ -24,25 +24,7 @@ public class BateriaCompleta extends DrummerAbstract {
         super(name);
     }
 
-    @Override
-    public void criarObjeto(ColorRGBA color, Node rootNode, AssetManager assetManager) {
-        Spatial bateriaCompleta = assetManager.loadModel("Models/drums_current8.j3o");
 
-        this.setObjeto(bateriaCompleta);
-        
-        Material boxMat = new Material(assetManager, "Common/MatDefs/Light/Lighting.j3md");
-        boxMat.setColor("Ambient", color); 
-        boxMat.setBoolean("UseMaterialColors", true); 
-        
-        bateriaCompleta.scale(0.5f, 0.5f, 0.5f);
-        
-        bateriaCompleta.setMaterial(boxMat);
-        bateriaCompleta.setName(this.getName());
-        bateriaCompleta.rotate(0, 0, -0.4f);
-        bateriaCompleta.setLocalTranslation(-5f, 0, 0);
-        
-        rootNode.attachChild(bateriaCompleta);
-    }
 
     @Override
     public void movimentaObjeto(Node rootNode, float tpf) {
@@ -57,6 +39,26 @@ public class BateriaCompleta extends DrummerAbstract {
     @Override
     protected void controlRender(RenderManager rm, ViewPort vp) {
      //   throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void criarObjeto(Node rootNode, AssetManager assetManager) {
+        Spatial bateriaCompleta = assetManager.loadModel("Models/drums_current8.j3o");
+
+        this.setObjeto(bateriaCompleta);
+        
+        Material boxMat = new Material(assetManager, "Common/MatDefs/Light/Lighting.j3md");
+        boxMat.setColor("Ambient", ColorRGBA.Black); 
+        boxMat.setBoolean("UseMaterialColors", true); 
+        
+        bateriaCompleta.scale(0.5f, 0.5f, 0.5f);
+        
+        bateriaCompleta.setMaterial(boxMat);
+        bateriaCompleta.setName(this.getName());
+        bateriaCompleta.rotate(0, 0, -0.4f);
+        bateriaCompleta.setLocalTranslation(-5f, 0, 0);
+        
+        rootNode.attachChild(bateriaCompleta);
     }
     
 }
