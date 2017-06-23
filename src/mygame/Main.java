@@ -1,11 +1,14 @@
 package mygame;
 
+import br.facens.models.config.MyStartScreenDrummer;
 import br.facens.models.interfaces.DrummerAbstract;
 import com.jme3.animation.AnimChannel;
 import com.jme3.animation.AnimControl;
 import com.jme3.app.SimpleApplication;
 import com.jme3.audio.AudioData.DataType;
 import com.jme3.audio.AudioNode;
+import com.jme3.font.BitmapFont;
+import com.jme3.font.BitmapText;
 import com.jme3.input.KeyInput;
 import com.jme3.input.MouseInput;
 import com.jme3.input.controls.ActionListener;
@@ -16,9 +19,12 @@ import com.jme3.light.AmbientLight;
 import com.jme3.light.DirectionalLight;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
+import com.jme3.niftygui.NiftyJmeDisplay;
 import com.jme3.renderer.RenderManager;
 import com.jme3.scene.Node;
 import com.jme3.system.AppSettings;
+import de.lessvoid.nifty.Nifty;
+import java.util.Date;
 
 /**
  * This is the Main Class of your Game. You should only do initialization here.
@@ -84,6 +90,13 @@ public class Main extends SimpleApplication {
     private AnimControl control;
     
 
+    private MyStartScreenDrummer startScreen;
+    private double health = 100;
+    private Nifty nifty;
+    
+    BitmapText placar;
+    BitmapText tempo;
+    
     
     private static Main app;
     public static void main(String[] args) {
@@ -99,6 +112,27 @@ public class Main extends SimpleApplication {
     @Override
     public void simpleInitApp() {
 
+        setDisplayStatView(false);
+        setDisplayFps(false);
+        
+        
+        guiFont = assetManager.loadFont("Interface/Fonts/Default.fnt");
+        BitmapText ch = new BitmapText(guiFont, false);
+        ch.setSize(guiFont.getCharSet().getRenderedSize() * 2);
+        ch.setText("+"); // crosshairs
+        ch.setLocalTranslation( // center
+                settings.getWidth() / 2 - guiFont.getCharSet().getRenderedSize() / 3 * 2,
+                settings.getHeight() / 2 + ch.getLineHeight() / 2 - 20, 0); //Esse -20 foi colocado para baixar um pouco a mira
+        guiNode.attachChild(ch);
+        
+        guiFont = assetManager.loadFont("Interface/Fonts/Default.fnt");
+        BitmapText placar = new BitmapText(guiFont, false);
+        placar.setSize(guiFont.getCharSet().getRenderedSize() * 3.5f);
+        placar.setLocalTranslation(settings.getWidth() - guiFont.getCharSet().getWidth(), settings.getHeight(), 0);
+        guiNode.attachChild(placar);
+
+        placar.setText("2017_DrummerPlayer");
+        
         viewPort.setBackgroundColor(ColorRGBA.LightGray);
         
         this.setIsRunning(true);
@@ -114,8 +148,6 @@ public class Main extends SimpleApplication {
 
         
         this.buildDrummer();
-
-        
         
         initKeys(); // load my custom keybinding
         initAudio();
@@ -370,6 +402,35 @@ public class Main extends SimpleApplication {
         audio_nature.play(); // play continuously!*/
     }
 
+    protected void initStringsScreen() {
+        guiNode.detachAllChildren();
+        guiFont = assetManager.loadFont("Interface/Fonts/Default.fnt");
+        BitmapText ch = new BitmapText(guiFont, false);
+        ch.setSize(guiFont.getCharSet().getRenderedSize() * 2);
+        ch.setText("+"); // crosshairs
+        ch.setLocalTranslation( // center
+                settings.getWidth() / 2 - guiFont.getCharSet().getRenderedSize() / 3 * 2,
+                settings.getHeight() / 2 + ch.getLineHeight() / 2 - 20, 0); //Esse -20 foi colocado para baixar um pouco a mira
+        guiNode.attachChild(ch);
+
+        guiFont = assetManager.loadFont("Interface/Fonts/Default.fnt");
+        placar = new BitmapText(guiFont, false);
+        placar.setSize(guiFont.getCharSet().getRenderedSize() * 3.5f);
+        placar.setLocalTranslation(settings.getWidth() - guiFont.getCharSet().getWidth(), settings.getHeight(), 0);
+        guiNode.attachChild(placar);
+
+        guiFont = assetManager.loadFont("Interface/Fonts/Default.fnt");
+        tempo = new BitmapText(guiFont, false);
+        tempo.setSize(guiFont.getCharSet().getRenderedSize() * 3.5f);
+        tempo.setLocalTranslation(0, settings.getHeight(), 0);
+        guiNode.attachChild(tempo);
+
+        placar.setText("Placar = 0");//Inicia Placar
+        tempo.setText("Tempo restante: 00:00");
+       // startTime = System.currentTimeMillis();
+        //afterAddingTenMins = new Date(startTime + (10 * 6000));
+    }
+    
     private ActionListener actionListener = new ActionListener() {
         public void onAction(String name, boolean keyPressed, float tpf) {
             if (name.equals("Pause") && !keyPressed) {
