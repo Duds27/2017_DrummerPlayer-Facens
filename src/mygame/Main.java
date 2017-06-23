@@ -18,6 +18,7 @@ import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.RenderManager;
 import com.jme3.scene.Node;
+import com.jme3.system.AppSettings;
 
 /**
  * This is the Main Class of your Game. You should only do initialization here.
@@ -32,6 +33,7 @@ public class Main extends SimpleApplication {
     private AudioNode audio_prato;
     private AudioNode audio_pedal;
     private AudioNode audio_caixa_esquerda;
+    private AudioNode audio_caixa_direita;
     private AudioNode audio_nature;
 
     private DrummerAbstract bateriaCompleta;
@@ -48,10 +50,14 @@ public class Main extends SimpleApplication {
     private boolean mexerCaixaEsquerda;
     private boolean CaixaEsquerdaAux = false;
     
+    private boolean mexerCaixaDireita;
+    private boolean CaixaDireitaAux = false;
+    
     private long tempoInicialPratoEsquerdo;
     private long tempoInicialPratoDireito;
     private long tempoInicialPedal;
     private long tempoInicialCaixaEsquerda;
+    private long tempoInicialCaixaDireita;
     
     
     private AnimChannel channel;
@@ -61,8 +67,12 @@ public class Main extends SimpleApplication {
     
     private static Main app;
     public static void main(String[] args) {
-        app = new Main();
-        app.showSettings = false;
+        AppSettings settings = new AppSettings(true);
+        settings.setFullscreen(true);
+        settings.setResolution(1366, 768);
+        app = new Main();     
+        app.setShowSettings(false);
+        app.setSettings(settings);
         app.start();
     }
 
@@ -76,6 +86,7 @@ public class Main extends SimpleApplication {
         this.setMexerPratoDireito(false);
         this.setMexerPedal(false);
         this.setMexerCaixaEsquerda(false);
+        this.setMexerCaixaDireita(false);
 
         
         this.buildDrummer();
@@ -163,6 +174,19 @@ public class Main extends SimpleApplication {
             }            
         }
         
+        // Rotina de movimentação da caixa direita
+        if (this.isMexerCaixaDireita()) {
+            long tempoAux = System.currentTimeMillis();
+                
+            //System.out.println("Tempo: " + Math.abs(tempoAux - tempoInicialCaixaDireita));
+                
+            if ( Math.abs(tempoAux - tempoInicialCaixaDireita) > 2000 ) {
+                CaixaDireitaAux = false;                
+                System.out.println("3 segundos! " + Math.abs(tempoAux - tempoInicialCaixaDireita));
+                this.setMexerCaixaDireita(false);
+            }            
+        }
+        
     }
 
     @Override
@@ -185,6 +209,7 @@ public class Main extends SimpleApplication {
         inputManager.addMapping("Prato_Direito_Batida", new KeyTrigger(KeyInput.KEY_Y));
         inputManager.addMapping("Pedal_Batida", new KeyTrigger(KeyInput.KEY_V));
         inputManager.addMapping("Caixa_Esquerda_Batida", new KeyTrigger(KeyInput.KEY_F));
+        inputManager.addMapping("Caixa_Direita_Batida", new KeyTrigger(KeyInput.KEY_H));
         
         // Add the names to the action listener.
         inputManager.addListener(actionListener, "Pause", "Sair");
@@ -193,6 +218,7 @@ public class Main extends SimpleApplication {
         inputManager.addListener(actionListener, "Prato_Direito_Batida");
         inputManager.addListener(actionListener, "Pedal_Batida");
         inputManager.addListener(actionListener, "Caixa_Esquerda_Batida");
+        inputManager.addListener(actionListener, "Caixa_Direita_Batida");
 
     }
 
@@ -219,6 +245,12 @@ public class Main extends SimpleApplication {
         audio_caixa_esquerda.setLooping(false);
         audio_caixa_esquerda.setVolume(2);
         rootNode.attachChild(audio_caixa_esquerda);
+        
+        audio_caixa_direita = new AudioNode(assetManager, "Sounds/caixa-3.wav", DataType.Buffer);
+        audio_caixa_direita.setPositional(false);
+        audio_caixa_direita.setLooping(false);
+        audio_caixa_direita.setVolume(2);
+        rootNode.attachChild(audio_caixa_direita);
         
         
 
@@ -275,11 +307,21 @@ public class Main extends SimpleApplication {
             
             if (name.equals("Caixa_Esquerda_Batida") && !keyPressed) {                
                 audio_caixa_esquerda.playInstance(); // play each instance once!                
-                if (!PedalAux) {
+                if (!CaixaEsquerdaAux) {
                     setMexerCaixaEsquerda(true);
                     //audio_gun.playInstance(); // play each instance once!
                     tempoInicialCaixaEsquerda = System.currentTimeMillis();
                     CaixaEsquerdaAux          = true;
+                }                
+            }
+            
+            if (name.equals("Caixa_Direita_Batida") && !keyPressed) {                
+                audio_caixa_direita.playInstance(); // play each instance once!                
+                if (!CaixaDireitaAux) {
+                    setMexerCaixaDireita(true);
+                    //audio_gun.playInstance(); // play each instance once!
+                    tempoInicialCaixaDireita = System.currentTimeMillis();
+                    CaixaDireitaAux          = true;
                 }                
             }
             
@@ -519,6 +561,38 @@ public class Main extends SimpleApplication {
 
     public void setTempoInicialCaixaEsquerda(long tempoInicialCaixaEsquerda) {
         this.tempoInicialCaixaEsquerda = tempoInicialCaixaEsquerda;
+    }
+
+    public AudioNode getAudio_caixa_direita() {
+        return audio_caixa_direita;
+    }
+
+    public void setAudio_caixa_direita(AudioNode audio_caixa_direita) {
+        this.audio_caixa_direita = audio_caixa_direita;
+    }
+
+    public boolean isMexerCaixaDireita() {
+        return mexerCaixaDireita;
+    }
+
+    public void setMexerCaixaDireita(boolean mexerCaixaDireita) {
+        this.mexerCaixaDireita = mexerCaixaDireita;
+    }
+
+    public boolean isCaixaDireitaAux() {
+        return CaixaDireitaAux;
+    }
+
+    public void setCaixaDireitaAux(boolean CaixaDireitaAux) {
+        this.CaixaDireitaAux = CaixaDireitaAux;
+    }
+
+    public long getTempoInicialCaixaDireita() {
+        return tempoInicialCaixaDireita;
+    }
+
+    public void setTempoInicialCaixaDireita(long tempoInicialCaixaDireita) {
+        this.tempoInicialCaixaDireita = tempoInicialCaixaDireita;
     }
     
     
