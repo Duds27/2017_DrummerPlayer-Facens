@@ -29,7 +29,8 @@ public class Main extends SimpleApplication {
 
     private boolean isRunning;
 
-    private AudioNode audio_gun;
+    private AudioNode audio_prato;
+    private AudioNode audio_pedal;
     private AudioNode audio_nature;
 
     private DrummerAbstract bateriaCompleta;
@@ -40,8 +41,12 @@ public class Main extends SimpleApplication {
     private boolean mexerPratoDireito;
     private boolean PratoDireitoAux = false;
     
+    private boolean mexerPedal;
+    private boolean PedalAux = false;
+    
     private long tempoInicialPratoEsquerdo;
     private long tempoInicialPratoDireito;
+    private long tempoInicialPedal;
     
     
     private AnimChannel channel;
@@ -64,6 +69,7 @@ public class Main extends SimpleApplication {
         this.setIsRunning(true);
         this.setMexerPratoEsquerdo(false);
         this.setMexerPratoDireito(false);
+        this.setMexerPedal(false);
 
         
         this.buildDrummer();
@@ -111,7 +117,7 @@ public class Main extends SimpleApplication {
             }            
         }
         
-        // Rotina de movimentação do prato esquerdo        
+        // Rotina de movimentação do prato direito        
         if (this.isMexerPratoDireito()) {
             long tempoAux = System.currentTimeMillis();
                 
@@ -121,6 +127,20 @@ public class Main extends SimpleApplication {
                 PratoDireitoAux = false;                
                 System.out.println("3 segundos! " + Math.abs(tempoAux - tempoInicialPratoDireito));
                 this.setMexerPratoDireito(false);
+            }            
+        }
+        
+        
+        // Rotina de movimentação do pedal
+        if (this.isMexerPedal()) {
+            long tempoAux = System.currentTimeMillis();
+                
+            //System.out.println("Tempo: " + Math.abs(tempoAux - tempoInicialPedal));
+                
+            if ( Math.abs(tempoAux - tempoInicialPedal) > 2000 ) {
+                PedalAux = false;                
+                System.out.println("3 segundos! " + Math.abs(tempoAux - tempoInicialPedal));
+                this.setMexerPedal(false);
             }            
         }
         
@@ -144,12 +164,14 @@ public class Main extends SimpleApplication {
         inputManager.addMapping("Rotate_Down", new KeyTrigger(KeyInput.KEY_DOWN));
         inputManager.addMapping("Prato_Esquerdo_Batida", new KeyTrigger(KeyInput.KEY_F));
         inputManager.addMapping("Prato_Direito_Batida", new KeyTrigger(KeyInput.KEY_G));
+        inputManager.addMapping("Pedal_Batida", new KeyTrigger(KeyInput.KEY_V));
         
         // Add the names to the action listener.
         inputManager.addListener(actionListener, "Pause", "Sair");
         inputManager.addListener(analogListener, "Rotate_Left", "Rotate_Right");
         inputManager.addListener(actionListener, "Prato_Esquerdo_Batida");
         inputManager.addListener(actionListener, "Prato_Direito_Batida");
+        inputManager.addListener(actionListener, "Pedal_Batida");
 
     }
 
@@ -158,19 +180,27 @@ public class Main extends SimpleApplication {
      */
     private void initAudio() {
         /* gun shot sound is to be triggered by a mouse click. */
-        audio_gun = new AudioNode(assetManager, "Sounds/prato-agudo.wav", DataType.Buffer);
-        audio_gun.setPositional(false);
-        audio_gun.setLooping(false);
-        audio_gun.setVolume(2);
-        rootNode.attachChild(audio_gun);
+        audio_prato = new AudioNode(assetManager, "Sounds/prato-agudo.wav", DataType.Buffer);
+        audio_prato.setPositional(false);
+        audio_prato.setLooping(false);
+        audio_prato.setVolume(2);
+        rootNode.attachChild(audio_prato);
+        
+        audio_pedal = new AudioNode(assetManager, "Sounds/pedal.wav", DataType.Buffer);
+        audio_pedal.setPositional(false);
+        audio_pedal.setLooping(false);
+        audio_pedal.setVolume(2);
+        rootNode.attachChild(audio_pedal);
+        
+        
 
         /* nature sound - keeps playing in a loop. */
-        audio_nature = new AudioNode(assetManager, "Sounds/pedal.wav", DataType.Stream);
+       /* audio_nature = new AudioNode(assetManager, "Sounds/pedal.wav", DataType.Stream);
         audio_nature.setLooping(true);  // activate continuous playing
         audio_nature.setPositional(false);
         audio_nature.setVolume(3);
         rootNode.attachChild(audio_nature);
-        audio_nature.play(); // play continuously!
+        audio_nature.play(); // play continuously!*/
     }
 
     private ActionListener actionListener = new ActionListener() {
@@ -186,7 +216,7 @@ public class Main extends SimpleApplication {
             }
             
             if (name.equals("Prato_Esquerdo_Batida") && !keyPressed) {                
-                audio_gun.playInstance(); // play each instance once!                
+                audio_prato.playInstance(); // play each instance once!                
                 if (!PratoEsquerdoAux) {
                     setMexerPratoEsquerdo(true);                    
                     //audio_gun.playInstance(); // play each instance once!
@@ -196,7 +226,7 @@ public class Main extends SimpleApplication {
             }
             
             if (name.equals("Prato_Direito_Batida") && !keyPressed) {                
-                audio_gun.playInstance(); // play each instance once!                
+                audio_prato.playInstance(); // play each instance once!                
                 if (!PratoDireitoAux) {
                     setMexerPratoDireito(true);                    
                     //audio_gun.playInstance(); // play each instance once!
@@ -204,6 +234,17 @@ public class Main extends SimpleApplication {
                     PratoDireitoAux          = true;
                 }                
             }
+            
+            if (name.equals("Pedal_Batida") && !keyPressed) {                
+                audio_pedal.playInstance(); // play each instance once!                
+                if (!PedalAux) {
+                    setMexerPedal(true);                    
+                    //audio_gun.playInstance(); // play each instance once!
+                    tempoInicialPedal = System.currentTimeMillis();
+                    PedalAux          = true;
+                }                
+            }
+            
 
         }
     };
@@ -257,12 +298,12 @@ public class Main extends SimpleApplication {
         this.isRunning = isRunning;
     }    
 
-    public AudioNode getAudio_gun() {
-        return audio_gun;
+    public AudioNode getAudio_Prato() {
+        return audio_prato;
     }
 
-    public void setAudio_gun(AudioNode audio_gun) {
-        this.audio_gun = audio_gun;
+    public void setAudio_Prato(AudioNode audio_prato) {
+        this.audio_prato = audio_prato;
     }
 
     public AudioNode getAudio_nature() {
@@ -367,6 +408,46 @@ public class Main extends SimpleApplication {
 
     public void setAnalogListener(AnalogListener analogListener) {
         this.analogListener = analogListener;
+    }
+
+    public AudioNode getAudio_prato() {
+        return audio_prato;
+    }
+
+    public void setAudio_prato(AudioNode audio_prato) {
+        this.audio_prato = audio_prato;
+    }
+
+    public AudioNode getAudio_pedal() {
+        return audio_pedal;
+    }
+
+    public void setAudio_pedal(AudioNode audio_pedal) {
+        this.audio_pedal = audio_pedal;
+    }
+
+    public boolean isMexerPedal() {
+        return mexerPedal;
+    }
+
+    public void setMexerPedal(boolean mexerPedal) {
+        this.mexerPedal = mexerPedal;
+    }
+
+    public boolean isPedalAux() {
+        return PedalAux;
+    }
+
+    public void setPedalAux(boolean PedalAux) {
+        this.PedalAux = PedalAux;
+    }
+
+    public long getTempoInicialPedal() {
+        return tempoInicialPedal;
+    }
+
+    public void setTempoInicialPedal(long tempoInicialPedal) {
+        this.tempoInicialPedal = tempoInicialPedal;
     }
     
     
