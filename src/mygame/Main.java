@@ -36,6 +36,8 @@ public class Main extends SimpleApplication {
     private AudioNode audio_caixa_direita;
     private AudioNode audio_caixa_central;
     private AudioNode audio_shibal;
+    private AudioNode audio_prato_aberto;
+    private AudioNode audio_prato_fechado;
     private AudioNode audio_nature;
 
     private DrummerAbstract bateriaCompleta;
@@ -60,6 +62,12 @@ public class Main extends SimpleApplication {
     
     private boolean mexerShibal;
     private boolean ShibalAux = false;
+
+    private boolean mexerPratoAberto;
+    private boolean PratoAbertoAux = false;
+    
+    private boolean mexerPratoFechado;
+    private boolean PratoFechadoAux = false;
     
     private long tempoInicialPratoEsquerdo;
     private long tempoInicialPratoDireito;
@@ -68,6 +76,8 @@ public class Main extends SimpleApplication {
     private long tempoInicialCaixaDireita;
     private long tempoInicialCaixaCentral;
     private long tempoInicialShibal;
+    private long tempoInicialPratoAberto;
+    private long tempoInicialPratoFechado;
     
     
     private AnimChannel channel;
@@ -99,6 +109,8 @@ public class Main extends SimpleApplication {
         this.setMexerCaixaDireita(false);
         this.setMexerCaixaCentral(false);
         this.setMexerShibal(false);
+        this.setMexerPratoAberto(false);
+        this.setMexerPratoFechado(false);
 
         
         this.buildDrummer();
@@ -225,6 +237,32 @@ public class Main extends SimpleApplication {
             }            
         }
         
+        // Rotina de movimentação do prato aberto        
+        if (this.isMexerPratoAberto()) {            
+            long tempoAux = System.currentTimeMillis();
+                
+            //System.out.println("Tempo: " + Math.abs(tempoAux - tempoInicialPratoAberto));
+                
+            if ( Math.abs(tempoAux - tempoInicialPratoAberto) > 2000 ) {
+                PratoAbertoAux = false;                
+                System.out.println("3 segundos! " + Math.abs(tempoAux - tempoInicialPratoAberto));
+                this.setMexerPratoAberto(false);
+            }            
+        }
+        
+        // Rotina de movimentação do prato fechado
+        if (this.isMexerPratoFechado()) {            
+            long tempoAux = System.currentTimeMillis();
+                
+            //System.out.println("Tempo: " + Math.abs(tempoAux - tempoInicialPratoFechado));
+                
+            if ( Math.abs(tempoAux - tempoInicialPratoFechado) > 2000 ) {
+                PratoFechadoAux = false;                
+                System.out.println("3 segundos! " + Math.abs(tempoAux - tempoInicialPratoFechado));
+                this.setMexerPratoFechado(false);
+            }            
+        }
+        
     }
 
     @Override
@@ -250,6 +288,8 @@ public class Main extends SimpleApplication {
         inputManager.addMapping("Caixa_Direita_Batida", new KeyTrigger(KeyInput.KEY_H));
         inputManager.addMapping("Caixa_Central_Batida", new KeyTrigger(KeyInput.KEY_G));
         inputManager.addMapping("Shibal_Batida", new KeyTrigger(KeyInput.KEY_C));
+        inputManager.addMapping("Prato_Aberto_Batida", new KeyTrigger(KeyInput.KEY_D));
+        inputManager.addMapping("Prato_Fechado_Batida", new KeyTrigger(KeyInput.KEY_S));
         
         // Add the names to the action listener.
         inputManager.addListener(actionListener, "Pause", "Sair");
@@ -261,6 +301,8 @@ public class Main extends SimpleApplication {
         inputManager.addListener(actionListener, "Caixa_Direita_Batida");
         inputManager.addListener(actionListener, "Caixa_Central_Batida");
         inputManager.addListener(actionListener, "Shibal_Batida");
+        inputManager.addListener(actionListener, "Prato_Aberto_Batida");
+        inputManager.addListener(actionListener, "Prato_Fechado_Batida");
 
     }
 
@@ -305,6 +347,18 @@ public class Main extends SimpleApplication {
         audio_shibal.setLooping(false);
         audio_shibal.setVolume(2);
         rootNode.attachChild(audio_shibal);
+        
+        audio_prato_aberto = new AudioNode(assetManager, "Sounds/prato-aberto.wav", DataType.Buffer);
+        audio_prato_aberto.setPositional(false);
+        audio_prato_aberto.setLooping(false);
+        audio_prato_aberto.setVolume(2);
+        rootNode.attachChild(audio_prato_aberto);
+        
+        audio_prato_fechado = new AudioNode(assetManager, "Sounds/prato-fechado.wav", DataType.Buffer);
+        audio_prato_fechado.setPositional(false);
+        audio_prato_fechado.setLooping(false);
+        audio_prato_fechado.setVolume(2);
+        rootNode.attachChild(audio_prato_fechado);
         
 
         /* nature sound - keeps playing in a loop. */
@@ -396,8 +450,27 @@ public class Main extends SimpleApplication {
                     tempoInicialShibal = System.currentTimeMillis();
                     ShibalAux          = true;
                 }                
-            }            
+            }         
             
+            if (name.equals("Prato_Aberto_Batida") && !keyPressed) {
+                audio_prato_aberto.playInstance(); // play each instance once!                
+                if (!PratoAbertoAux) {
+                    setMexerPratoAberto(true);                    
+                    //audio_gun.playInstance(); // play each instance once!
+                    tempoInicialPratoAberto = System.currentTimeMillis();
+                    PratoAbertoAux          = true;
+                }                
+            }
+            
+            if (name.equals("Prato_Fechado_Batida") && !keyPressed) {
+                audio_prato_fechado.playInstance(); // play each instance once!                
+                if (!PratoFechadoAux) {
+                    setMexerPratoFechado(true);                    
+                    //audio_gun.playInstance(); // play each instance once!
+                    tempoInicialPratoFechado = System.currentTimeMillis();
+                    PratoFechadoAux          = true;
+                }                
+            }
             
 
         }
@@ -730,6 +803,70 @@ public class Main extends SimpleApplication {
 
     public void setTempoInicialShibal(long tempoInicialShibal) {
         this.tempoInicialShibal = tempoInicialShibal;
+    }
+
+    public AudioNode getAudio_prato_aberto() {
+        return audio_prato_aberto;
+    }
+
+    public void setAudio_prato_aberto(AudioNode audio_prato_aberto) {
+        this.audio_prato_aberto = audio_prato_aberto;
+    }
+
+    public AudioNode getAudio_prato_fechado() {
+        return audio_prato_fechado;
+    }
+
+    public void setAudio_prato_fechado(AudioNode audio_prato_fechado) {
+        this.audio_prato_fechado = audio_prato_fechado;
+    }
+
+    public boolean isMexerPratoAberto() {
+        return mexerPratoAberto;
+    }
+
+    public void setMexerPratoAberto(boolean mexerPratoAberto) {
+        this.mexerPratoAberto = mexerPratoAberto;
+    }
+
+    public boolean isPratoAbertoAux() {
+        return PratoAbertoAux;
+    }
+
+    public void setPratoAbertoAux(boolean PratoAbertoAux) {
+        this.PratoAbertoAux = PratoAbertoAux;
+    }
+
+    public boolean isMexerPratoFechado() {
+        return mexerPratoFechado;
+    }
+
+    public void setMexerPratoFechado(boolean mexerPratoFechado) {
+        this.mexerPratoFechado = mexerPratoFechado;
+    }
+
+    public boolean isPratoFechadoAux() {
+        return PratoFechadoAux;
+    }
+
+    public void setPratoFechadoAux(boolean PratoFechadoAux) {
+        this.PratoFechadoAux = PratoFechadoAux;
+    }
+
+    public long getTempoInicialPratoAberto() {
+        return tempoInicialPratoAberto;
+    }
+
+    public void setTempoInicialPratoAberto(long tempoInicialPratoAberto) {
+        this.tempoInicialPratoAberto = tempoInicialPratoAberto;
+    }
+
+    public long getTempoInicialPratoFechado() {
+        return tempoInicialPratoFechado;
+    }
+
+    public void setTempoInicialPratoFechado(long tempoInicialPratoFechado) {
+        this.tempoInicialPratoFechado = tempoInicialPratoFechado;
     }
     
     
