@@ -10,6 +10,8 @@ import com.jme3.asset.AssetManager;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Quaternion;
+import com.jme3.renderer.RenderManager;
+import com.jme3.renderer.ViewPort;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 
@@ -66,6 +68,16 @@ public class PratoDireito extends DrummerAbstract {
         }
         
         pratoDireito.rotate(0, 0, tpf * this.getDirection());
+    }
+
+    @Override
+    protected void controlUpdate(float tpf) {
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    protected void controlRender(RenderManager rm, ViewPort vp) {
+      //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

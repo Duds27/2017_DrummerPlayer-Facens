@@ -9,12 +9,13 @@ import com.jme3.asset.AssetManager;
 import com.jme3.math.ColorRGBA;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
+import com.jme3.scene.control.AbstractControl;
 
 /**
  *
  * @author Eduardo
  */
-public abstract class DrummerAbstract {
+public abstract class DrummerAbstract extends AbstractControl {
     
     public static final long TIME_MAX_SECONDS = 1000;
     public static final long TIME_MIN_SECONDS = 500;
@@ -29,6 +30,8 @@ public abstract class DrummerAbstract {
     public DrummerAbstract(String name) {
         this.setName(name);
     }    
+    
+    public DrummerAbstract() {}
     
     public boolean isInitial() {
         return initial;
