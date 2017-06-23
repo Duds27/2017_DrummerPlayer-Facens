@@ -35,6 +35,7 @@ public class Main extends SimpleApplication {
     private AudioNode audio_caixa_esquerda;
     private AudioNode audio_caixa_direita;
     private AudioNode audio_caixa_central;
+    private AudioNode audio_shibal;
     private AudioNode audio_nature;
 
     private DrummerAbstract bateriaCompleta;
@@ -57,12 +58,16 @@ public class Main extends SimpleApplication {
     private boolean mexerCaixaCentral;
     private boolean CaixaCentralAux = false;
     
+    private boolean mexerShibal;
+    private boolean ShibalAux = false;
+    
     private long tempoInicialPratoEsquerdo;
     private long tempoInicialPratoDireito;
     private long tempoInicialPedal;
     private long tempoInicialCaixaEsquerda;
     private long tempoInicialCaixaDireita;
     private long tempoInicialCaixaCentral;
+    private long tempoInicialShibal;
     
     
     private AnimChannel channel;
@@ -93,6 +98,7 @@ public class Main extends SimpleApplication {
         this.setMexerCaixaEsquerda(false);
         this.setMexerCaixaDireita(false);
         this.setMexerCaixaCentral(false);
+        this.setMexerShibal(false);
 
         
         this.buildDrummer();
@@ -206,6 +212,19 @@ public class Main extends SimpleApplication {
             }            
         }
         
+        // Rotina de movimentação do shibal
+        if (this.isMexerShibal()) {
+            long tempoAux = System.currentTimeMillis();
+                
+            //System.out.println("Tempo: " + Math.abs(tempoAux - tempoInicialShibal));
+                
+            if ( Math.abs(tempoAux - tempoInicialShibal) > 2000 ) {
+                ShibalAux = false;                
+                System.out.println("3 segundos! " + Math.abs(tempoAux - tempoInicialShibal));
+                this.setMexerShibal(false);
+            }            
+        }
+        
     }
 
     @Override
@@ -230,6 +249,7 @@ public class Main extends SimpleApplication {
         inputManager.addMapping("Caixa_Esquerda_Batida", new KeyTrigger(KeyInput.KEY_F));
         inputManager.addMapping("Caixa_Direita_Batida", new KeyTrigger(KeyInput.KEY_H));
         inputManager.addMapping("Caixa_Central_Batida", new KeyTrigger(KeyInput.KEY_G));
+        inputManager.addMapping("Shibal_Batida", new KeyTrigger(KeyInput.KEY_C));
         
         // Add the names to the action listener.
         inputManager.addListener(actionListener, "Pause", "Sair");
@@ -240,6 +260,7 @@ public class Main extends SimpleApplication {
         inputManager.addListener(actionListener, "Caixa_Esquerda_Batida");
         inputManager.addListener(actionListener, "Caixa_Direita_Batida");
         inputManager.addListener(actionListener, "Caixa_Central_Batida");
+        inputManager.addListener(actionListener, "Shibal_Batida");
 
     }
 
@@ -279,6 +300,11 @@ public class Main extends SimpleApplication {
         audio_caixa_central.setVolume(2);
         rootNode.attachChild(audio_caixa_central);
         
+        audio_shibal = new AudioNode(assetManager, "Sounds/shibal.wav", DataType.Buffer);
+        audio_shibal.setPositional(false);
+        audio_shibal.setLooping(false);
+        audio_shibal.setVolume(2);
+        rootNode.attachChild(audio_shibal);
         
 
         /* nature sound - keeps playing in a loop. */
@@ -361,6 +387,16 @@ public class Main extends SimpleApplication {
                     CaixaCentralAux          = true;
                 }                
             }
+            
+            if (name.equals("Shibal_Batida") && !keyPressed) {                
+                audio_shibal.playInstance(); // play each instance once!                
+                if (!ShibalAux) {
+                    setMexerShibal(true);
+                    //audio_gun.playInstance(); // play each instance once!
+                    tempoInicialShibal = System.currentTimeMillis();
+                    ShibalAux          = true;
+                }                
+            }            
             
             
 
@@ -662,6 +698,38 @@ public class Main extends SimpleApplication {
 
     public void setTempoInicialCaixaCentral(long tempoInicialCaixaCentral) {
         this.tempoInicialCaixaCentral = tempoInicialCaixaCentral;
+    }
+
+    public AudioNode getAudio_shibal() {
+        return audio_shibal;
+    }
+
+    public void setAudio_shibal(AudioNode audio_shibal) {
+        this.audio_shibal = audio_shibal;
+    }
+
+    public boolean isMexerShibal() {
+        return mexerShibal;
+    }
+
+    public void setMexerShibal(boolean mexerShibal) {
+        this.mexerShibal = mexerShibal;
+    }
+
+    public boolean isShibalAux() {
+        return ShibalAux;
+    }
+
+    public void setShibalAux(boolean ShibalAux) {
+        this.ShibalAux = ShibalAux;
+    }
+
+    public long getTempoInicialShibal() {
+        return tempoInicialShibal;
+    }
+
+    public void setTempoInicialShibal(long tempoInicialShibal) {
+        this.tempoInicialShibal = tempoInicialShibal;
     }
     
     
