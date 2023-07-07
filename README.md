@@ -1,8 +1,5 @@
 # 2017_DrummerPlayer-Facens
-Participantes:
-	- Eduardo Corrêa Encarnação 140044
-	- Tamie Pranstete			131199
-	
+
 Versão do Java:
 	1.8.0_121
 	
